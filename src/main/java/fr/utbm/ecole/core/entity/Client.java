@@ -55,7 +55,7 @@ public class Client implements Serializable {
      
     @JoinColumn(name = "COURSE_SESSION_ID")
     @ManyToOne(fetch = FetchType.EAGER)
-    private CourseSession Course_Session;
+    private CourseSession CourseSession;
   
     public Client() {
     }
@@ -64,14 +64,14 @@ public class Client implements Serializable {
         this.id = id;
     }
 
-    public Client(Integer id, String lastname, String firstname, String address,String phone,String email, CourseSession Course_Session) {
+    public Client(Integer id, String lastname, String firstname, String address,String phone,String email, CourseSession CourseSession) {
         this.id = id;
         this.lastname = lastname;
         this.firstname = firstname;
         this.address = address;
         this.phone = phone;        
         this.email = email;
-        this.Course_Session = Course_Session;
+        this.CourseSession = CourseSession;
         
     }
 
@@ -90,10 +90,48 @@ public class Client implements Serializable {
     public void setLastname(String lastname) {
         this.lastname = lastname;
     }
+    
+    public String getFirstname() {
+        return firstname;
+    }
 
-   
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+    
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+    
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return phone;
+    }
+
+    public void setEmail(String phone) {
+        this.phone = phone;
+    }
+    
+    public CourseSession getCourseSession() {
+        return CourseSession;
+    }
+
+    public void setCourseSession(CourseSession CourseSession) {
+        this.CourseSession = CourseSession;
+    }
     public String toString() {
-        return "Client{" + "id=" + id + ", lastname=" + lastname + ", firstname=" + firstname + ", address=" + address + ", phone=" + phone + ", email=" + email + ", Course_Session=" + Course_Session +  '}';
+        return "Client{" + "id=" + id + ", lastname=" + lastname + ", firstname=" + firstname + ", address=" + address + ", phone=" + phone + ", email=" + email + ", CourseSession=" + CourseSession +  '}';
     }
     
 }
