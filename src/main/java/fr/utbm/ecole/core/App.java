@@ -1,6 +1,6 @@
-package fr.utbm.dvdstore.core;
+package fr.utbm.ecole.core;
 
-import fr.utbm.dvdstore.core.controller.DefaultLocationController;
+import fr.utbm.ecole.core.controller.DefaultLocationController;
 
 /**
  *

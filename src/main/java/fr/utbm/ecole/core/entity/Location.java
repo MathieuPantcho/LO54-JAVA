@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.utbm.dvdstore.core.entity;
+package fr.utbm.ecole.core.entity;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
@@ -20,51 +20,52 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "LOCATION")
-public class Course implements Serializable {
+public class Location implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "CODE")
-    private String code;
+    @Column(name = "ID")
+    private Long id;
     
     @Basic(optional = false)
-    @Column(name = "TITLE")
-    private String title;
+    @Column(name = "CITY")
+    private String city;
     
   
-    public Course() {
+    public Location() {
     }
 
-    public Course(String code) {
-        this.code = code;
+    public Location(Long id) {
+        this.id = id;
     }
 
-    public Course(String code, String title) {
-        this.code = code;
-        this.title = title;
+    public Location(Long id, String city) {
+        this.id = id;
+        this.city = city;
     }
 
-    public String getId() {
-        return code;
+    public Long getId() {
+        return id;
     }
 
-    public void setId(String code) {
-        this.code = code;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getCity() {
-        return title;
+        return city;
     }
 
-    public void setCity(String title) {
-        this.title = title;
+    public void setCity(String city) {
+        this.city = city;
     }
 
    
     public String toString() {
-        return "Location{" + "code=" + code + ", title=" + title +  '}';
+        return "Location{" + "id=" + id + ", city=" + city +  '}';
     }
     
 }

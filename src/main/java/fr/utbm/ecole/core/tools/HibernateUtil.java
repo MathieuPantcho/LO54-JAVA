@@ -1,4 +1,4 @@
-package fr.utbm.dvdstore.core.tools;
+package fr.utbm.ecole.core.tools;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;

@@ -1,7 +1,7 @@
-package fr.utbm.dvdstore.core.controller;
+package fr.utbm.ecole.core.controller;
 
-import fr.utbm.dvdstore.core.entity.Location;
-import fr.utbm.dvdstore.core.service.LocationService;
+import fr.utbm.ecole.core.entity.Location;
+import fr.utbm.ecole.core.service.LocationService;
 import java.util.Scanner;
 
 /**

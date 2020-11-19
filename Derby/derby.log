@@ -1,7 +1,7 @@
-Fri Nov 06 14:34:05 CET 2020 : Apache Derby Network Server - 10.14.2.0 - (1828579) démarré et prêt à accepter les connexions sur le port 1527
+Mon Nov 16 08:26:10 CET 2020 : Apache Derby Network Server - 10.14.2.0 - (1828579) démarré et prêt à accepter les connexions sur le port 1527
 ----------------------------------------------------------------
-Fri Nov 06 14:34:05 CET 2020:
-Amorçage de Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579) : instance a816c00e-0175-9dc3-8fd2-ffffd84399ca 
+Mon Nov 16 08:44:17 CET 2020:
+Amorçage de Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579) : instance a816c00e-0175-cff2-405e-ffffd84399ca 
 dans le répertoire de base de données C:\Users\julie\LO54\Data\Projects\Projet\Derby\ECOLE avec le chargeur de classe jdk.internal.loader.ClassLoaders$AppClassLoader@2cdf8d8a
 Chargé de file:/C:/Users/julie/LO54/App/jdk/db/lib/derby.jar
 java.vendor=Oracle Corporation
@@ -12,3 +12,9 @@ os.arch=amd64
 os.version=10.0
 derby.system.home=C:\Users\julie\LO54\Data\Projects\Projet\Derby
 Chargeur de classe de la base de données démarré - derby.database.classpath = ''
+----------------------------------------------------------------
+Mon Nov 16 09:37:23 CET 2020 : fermeture du moteur Derby
+----------------------------------------------------------------
+Mon Nov 16 09:37:23 CET 2020:
+Fermeture de l'instance a816c00e-0175-cff2-405e-ffffd84399ca sur le répertoire de base de données C:\Users\julie\LO54\Data\Projects\Projet\Derby\ECOLE avec le chargeur de classe jdk.internal.loader.ClassLoaders$AppClassLoader@2cdf8d8a 
+----------------------------------------------------------------

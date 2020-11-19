@@ -1,11 +1,11 @@
-package fr.utbm.dvdstore.core.service;
+package fr.utbm.ecole.core.service;
 
-import fr.utbm.dvdstore.core.entity.Location;
-import fr.utbm.dvdstore.core.repository.ConsoleLocationDao;
-import fr.utbm.dvdstore.core.repository.EntityLocationDao;
-import fr.utbm.dvdstore.core.repository.FileLocationDao;
-import fr.utbm.dvdstore.core.repository.JdbcLocationDao;
-import fr.utbm.dvdstore.core.repository.HibernateLocationDao;
+import fr.utbm.ecole.core.entity.Location;
+import fr.utbm.ecole.core.repository.ConsoleLocationDao;
+import fr.utbm.ecole.core.repository.EntityLocationDao;
+import fr.utbm.ecole.core.repository.FileLocationDao;
+import fr.utbm.ecole.core.repository.JdbcLocationDao;
+import fr.utbm.ecole.core.repository.HibernateLocationDao;
 import java.util.ArrayList;
 
 /**
