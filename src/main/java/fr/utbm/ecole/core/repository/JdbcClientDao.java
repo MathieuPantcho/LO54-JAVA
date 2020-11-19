@@ -1,6 +1,7 @@
 package fr.utbm.ecole.core.repository;
 
 import fr.utbm.ecole.core.entity.Client;
+import fr.utbm.ecole.core.entity.CourseSession;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -85,6 +86,7 @@ public class JdbcClientDao {
                 c.setAddress(resultset.getString("ADDRESS"));
                 c.setPhone(resultset.getString("PHONE"));
                 c.setEmail(resultset.getString("TITLE"));
+                c.setCourseSession(new CourseSession(resultset.getLong("COURSE_SESSION_ID")));
                 client.add(c);
             }
         } catch (Exception e) {

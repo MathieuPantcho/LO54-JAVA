@@ -6,7 +6,7 @@ import fr.utbm.ecole.core.controller.DefaultCourseController;
  *
  * @author
  */
-public class App1 {
+public class CourseSession {
 
     public static void main(String[] args) {
         DefaultCourseController dfc = new DefaultCourseController();
