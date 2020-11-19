@@ -19,12 +19,10 @@ import javax.persistence.Table;
  * @author 
  */
 @Entity
-@Table(name = "LOCATION")
+@Table(name = "COURSE")
 public class Course implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
     @Basic(optional = false)
     @Column(name = "CODE")
     private String code;
@@ -46,19 +44,19 @@ public class Course implements Serializable {
         this.title = title;
     }
 
-    public String getId() {
+    public String getCode() {
         return code;
     }
 
-    public void setId(String code) {
+    public void setCode(String code) {
         this.code = code;
     }
 
-    public String getCity() {
+    public String getTitle() {
         return title;
     }
 
-    public void setCity(String title) {
+    public void setTitle(String title) {
         this.title = title;
     }
 
