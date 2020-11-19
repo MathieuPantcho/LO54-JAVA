@@ -1,5 +1,6 @@
 package fr.utbm.ecole.core.repository;
 
+import fr.utbm.ecole.core.entity.CourseSession;
 import fr.utbm.ecole.core.entity.Course;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,19 +12,23 @@ import java.util.ArrayList;
 
 public class JdbcCourseSessionDao {
 
-    public void save(Course l) {
-        savePrepareStatement(l);
+    public void save(CourseSession cs) {
+        savePrepareStatement(cs);
     }
 
-    public void saveStatement(Course l) {
+    public void saveStatement(CourseSession cs) {
         Connection con = null;
         try {
             Class.forName("org.apache.derby.jdbc.ClientDriver");
             con = DriverManager.getConnection("jdbc:derby://localhost:1527/ECOLE", "ecole", "ecole");
             Statement s = con.createStatement();
-            s.executeUpdate("INSERT INTO ECOLE.COURSE(CITY) VALUES('"
-                    + l.getCode() + "', "
-                    + l.getTitle() + "')");
+            s.executeUpdate("INSERT INTO ECOLE.COURSE_SESSION(ID, START_DATE, END_DATE, MAXIMUM, COURSE_CODE, LOCATION_ID) VALUES('"
+                    + cs.getId() + "', "
+                    + cs.getStartDate().toString() + "', "
+                    + cs.getEndDate().toString() + "', "
+                    + cs.getCourse().getCode() + "', "
+                    + cs.getLocation().getId() + "', "
+                    + cs.getMaximum() + "')");
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         } finally {
@@ -38,14 +43,18 @@ public class JdbcCourseSessionDao {
         }
     }
 
-    public void savePrepareStatement(Course l) {
+    public void savePrepareStatement(CourseSession cs) {
         Connection con = null;
         try {
             Class.forName("org.apache.derby.jdbc.ClientDriver");
             con = DriverManager.getConnection("jdbc:derby://localhost:1527/ECOLE", "ecole", "ecole");
-            PreparedStatement ps = con.prepareStatement("INSERT INTO ECOLE.COURSE(CODE,TITLE) VALUES(?,?)");
-            ps.setString(1, l.getCode());
-            ps.setString(2, l.getTitle());
+            PreparedStatement ps = con.prepareStatement("INSERT INTO ECOLE.COURSE_SESSION(ID, START_DATE, END_DATE, MAXIMUM, COURSE_CODE, LOCATION_ID) VALUES(?,?)");
+            ps.setLong(1, cs.getId());
+            ps.setDate(2, cs.getStartDate());
+            ps.setDate(3, cs.getEndDate());
+            ps.setString(4, cs.getCourse().getCode());
+            ps.setLong(4, cs.getLocation().getId());
+            ps.setLong(4, cs.getMaximum());
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -59,21 +68,24 @@ public class JdbcCourseSessionDao {
         }
     }
 
-    public ArrayList<Course> listFilm() {
+    public ArrayList<CourseSession> listCourseSession() {
         Connection con = null;
-        ArrayList<Course> location = new ArrayList<Course>();
+        ArrayList<CourseSession> courseSession = new ArrayList<CourseSession>();
 
         try {
             Class.forName("org.apache.derby.jdbc.ClientDriver");
             con = DriverManager.getConnection("jdbc:derby://localhost:1527/ECOLE", "ecole", "ecole");
-            String query="SELECT * FROM Course";
+            String query="SELECT * FROM COURSE_SESSION";
             Statement statement=con.createStatement();
             ResultSet resultset= statement.executeQuery(query);
             while(resultset.next()){
-                Course l = new Course();
-                l.setCode(resultset.getString("CODE"));
-                l.setTitle(resultset.getString("TITLE"));
-                location.add(l);
+                CourseSession cs = new CourseSession();
+                cs.setId(resultset.getLong("ID"));
+                cs.setStartDate(resultset.getDate("START_DATE"));
+                cs.setEndDate(resultset.getDate("END_DATE"));
+                cs.setMaximum(resultset.getInt("MAXIMUM"));
+                cs.setCourse(new Course(resultset.getString("COURSE_CODE")));
+                courseSession.add(cs);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -86,6 +98,6 @@ public class JdbcCourseSessionDao {
                 e.printStackTrace();
             }
         }
-        return location;
+        return courseSession;
     }
 }

@@ -37,11 +37,11 @@ public class CourseSession implements Serializable {
     
     @Basic(optional = false)
     @Column(name = "START_DATE")
-    private Date start_date;
+    private java.sql.Date start_date;
     
     @Basic(optional = false)
     @Column(name = "END_DATE")
-    private Date end_date;
+    private java.sql.Date end_date;
     
     @Basic(optional = false)
     @Column(name = "MAXIMUM")
@@ -64,7 +64,7 @@ public class CourseSession implements Serializable {
         this.id = id;
     }
 
-    public CourseSession(Long id, Date start_date,Date end_date,Integer maximum,Course Course,Location Location) {
+    public CourseSession(Long id, java.sql.Date start_date,java.sql.Date end_date,Integer maximum,Course Course,Location Location) {
         this.id = id;
         this.start_date = start_date;
         this.end_date = end_date;
@@ -73,12 +73,20 @@ public class CourseSession implements Serializable {
         this.Location = Location;
     }
     
-    public CourseSession(Long id, Date start_date,Date end_date,Course Course,Location Location) {
+    public CourseSession(Long id, java.sql.Date start_date,java.sql.Date end_date,Course Course,Location Location) {
         this.id = id;
         this.start_date = start_date;
         this.end_date = end_date;
         this.Course = Course;
         this.Location = Location;
+    }
+
+    public void setCourse(Course Course) {
+        this.Course = Course;
+    }
+
+    public Course getCourse() {
+        return Course;
     }
 
     public Long getId() {
@@ -89,19 +97,19 @@ public class CourseSession implements Serializable {
         this.id = id;
     }
 
-    public Date getStartDate() {
+    public java.sql.Date getStartDate() {
         return start_date;
     }
 
-    public void setStartDate(Date start_date) {
+    public void setStartDate(java.sql.Date start_date) {
         this.start_date = start_date;
     }
     
-     public Date getEndDate() {
+     public java.sql.Date getEndDate() {
         return end_date;
     }
 
-    public void setEndDate(Date end_date) {
+    public void setEndDate(java.sql.Date end_date) {
         this.end_date = end_date;
     }
     
