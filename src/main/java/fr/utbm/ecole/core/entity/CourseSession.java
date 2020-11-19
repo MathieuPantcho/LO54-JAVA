@@ -25,7 +25,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "COURSE_SESSION")
-public class Course_Session implements Serializable {
+public class CourseSession implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
@@ -57,14 +57,14 @@ public class Course_Session implements Serializable {
      
     
   
-    public Course_Session() {
+    public CourseSession() {
     }
 
-    public Course_Session(Long id) {
+    public CourseSession(Long id) {
         this.id = id;
     }
 
-    public Course_Session(Long id, Date start_date,Date end_date,Integer maximum,Course Course,Location Location) {
+    public CourseSession(Long id, Date start_date,Date end_date,Integer maximum,Course Course,Location Location) {
         this.id = id;
         this.start_date = start_date;
         this.end_date = end_date;
@@ -73,7 +73,7 @@ public class Course_Session implements Serializable {
         this.Location = Location;
     }
     
-    public Course_Session(Long id, Date start_date,Date end_date,Course Course,Location Location) {
+    public CourseSession(Long id, Date start_date,Date end_date,Course Course,Location Location) {
         this.id = id;
         this.start_date = start_date;
         this.end_date = end_date;

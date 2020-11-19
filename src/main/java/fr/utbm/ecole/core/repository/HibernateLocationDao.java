@@ -14,10 +14,10 @@ public class HibernateLocationDao {
 
     Transaction transaction = null;
 
-    public void save(Location f) {
+    public void save(Location l) {
         try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            session.save(f);
+            session.save(l);
             transaction.commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -27,13 +27,13 @@ public class HibernateLocationDao {
         }
     }
 
-    public ArrayList<Location> listFilm() {
-        ArrayList<Location> films = new ArrayList<Location>();
+    public ArrayList<Location> listLocation() {
+        ArrayList<Location> locations = new ArrayList<Location>();
         Session session = HibernateUtil.getSessionFactory().openSession();
 
         Query q = session.createQuery("from Location");
-        films = (ArrayList<Location>) q.list();
-        return films;
+        locations = (ArrayList<Location>) q.list();
+        return locations;
     }
 
     public Location getLocationById(Integer movieId) {
@@ -44,21 +44,12 @@ public class HibernateLocationDao {
 
         return entityManager.find(Location.class, 1L);
         
-//        Location movie = null;
-//        try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
-//            Query q = session.createQuery("from Location where id = :idmovie");
-//            q.setParameter("idmovie", movieId);
-//            movie = (Location) q.uniqueResult();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        return movie;
     }
 
-    public void update(Location f) {
+    public void update(Location l) {
         try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            session.update(f);
+            session.update(l);
             transaction.commit();
         } catch (Exception e) {
             e.printStackTrace();

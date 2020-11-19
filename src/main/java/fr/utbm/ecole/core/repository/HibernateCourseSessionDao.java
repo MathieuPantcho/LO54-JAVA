@@ -1,6 +1,6 @@
 package fr.utbm.ecole.core.repository;
 
-import fr.utbm.ecole.core.entity.Course;
+import fr.utbm.ecole.core.entity.CourseSession;
 import fr.utbm.ecole.core.tools.HibernateUtil;
 import java.util.ArrayList;
 import javax.persistence.EntityManager;
@@ -10,14 +10,14 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
-public class HibernateCourseDao {
+public class HibernateCourseSessionDao {
 
     Transaction transaction = null;
 
-    public void save(Course f) {
+    public void save(CourseSession cs) {
         try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            session.save(f);
+            session.save(cs);
             transaction.commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -27,29 +27,29 @@ public class HibernateCourseDao {
         }
     }
 
-    public ArrayList<Course> listCourse() {
-        ArrayList<Course> courses = new ArrayList<Course>();
+    public ArrayList<CourseSession> listFilm() {
+        ArrayList<CourseSession> films = new ArrayList<CourseSession>();
         Session session = HibernateUtil.getSessionFactory().openSession();
 
-        Query q = session.createQuery("from Course");
-        courses = (ArrayList<Course>) q.list();
-        return courses;
+        Query q = session.createQuery("from Course_Session");
+        films = (ArrayList<CourseSession>) q.list();
+        return films;
     }
 
-    public Course getCourseById(Integer movieId) {
+    public CourseSession getCourseSessionById(Integer coursesessionId) {
         
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("video");
         
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
-        return entityManager.find(Course.class, 1L);
+        return entityManager.find(CourseSession.class, 1L);
         
     }
 
-    public void update(Course f) {
+    public void update(CourseSession cs) {
         try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            session.update(f);
+            session.update(cs);
             transaction.commit();
         } catch (Exception e) {
             e.printStackTrace();

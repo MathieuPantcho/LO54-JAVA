@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class JdbcCourseDao {
+public class JdbcCourseSessionDao {
 
     public void save(Course l) {
         savePrepareStatement(l);

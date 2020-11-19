@@ -1,6 +1,6 @@
 package fr.utbm.ecole.core.repository;
 
-import fr.utbm.ecole.core.entity.Course;
+import fr.utbm.ecole.core.entity.Client;
 import fr.utbm.ecole.core.tools.HibernateUtil;
 import java.util.ArrayList;
 import javax.persistence.EntityManager;
@@ -10,14 +10,14 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
-public class HibernateCourseDao {
+public class HibernateClientDao {
 
     Transaction transaction = null;
 
-    public void save(Course f) {
+    public void save(Client c) {
         try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            session.save(f);
+            session.save(c);
             transaction.commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -27,29 +27,29 @@ public class HibernateCourseDao {
         }
     }
 
-    public ArrayList<Course> listCourse() {
-        ArrayList<Course> courses = new ArrayList<Course>();
+    public ArrayList<Client> listFilm() {
+        ArrayList<Client> films = new ArrayList<Client>();
         Session session = HibernateUtil.getSessionFactory().openSession();
 
-        Query q = session.createQuery("from Course");
-        courses = (ArrayList<Course>) q.list();
-        return courses;
+        Query q = session.createQuery("from CLIENT");
+        films = (ArrayList<Client>) q.list();
+        return films;
     }
 
-    public Course getCourseById(Integer movieId) {
+    public Client getClientById(Integer clientId) {
         
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("video");
         
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
-        return entityManager.find(Course.class, 1L);
+        return entityManager.find(Client.class, 1L);
         
     }
 
-    public void update(Course f) {
+    public void update(Client c) {
         try ( Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            session.update(f);
+            session.update(c);
             transaction.commit();
         } catch (Exception e) {
             e.printStackTrace();

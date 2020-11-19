@@ -31,7 +31,7 @@ public class Client implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "ID")
-    private Long id;
+    private Integer id;
     
     @Basic(optional = false)
     @Column(name = "LASTNAME")
@@ -55,16 +55,16 @@ public class Client implements Serializable {
      
     @JoinColumn(name = "COURSE_SESSION_ID")
     @ManyToOne(fetch = FetchType.EAGER)
-    private Course_Session Course_Session;
+    private CourseSession Course_Session;
   
     public Client() {
     }
 
-    public Client(Long id) {
+    public Client(Integer id) {
         this.id = id;
     }
 
-    public Client(Long id, String lastname, String firstname, String address,String phone,String email, Course_Session Course_Session) {
+    public Client(Integer id, String lastname, String firstname, String address,String phone,String email, CourseSession Course_Session) {
         this.id = id;
         this.lastname = lastname;
         this.firstname = firstname;
@@ -75,11 +75,11 @@ public class Client implements Serializable {
         
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

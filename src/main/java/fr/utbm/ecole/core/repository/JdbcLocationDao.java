@@ -12,10 +12,6 @@ import java.util.ArrayList;
 public class JdbcLocationDao {
 
     public void save(Location l) {
-        //Si Satement
-//        saveStatement(l);
-
-        //Si PreparedStatement
         savePrepareStatement(l);
     }
 
@@ -73,6 +69,7 @@ public class JdbcLocationDao {
             ResultSet resultset= statement.executeQuery(query);
             while(resultset.next()){
                 Location l = new Location();
+                l.setId(resultset.getLong("ID"));
                 l.setCity(resultset.getString("CITY"));
                 location.add(l);
             }

@@ -9,21 +9,22 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class JdbcCourseDao {
+public class JdbcClientDao {
 
-    public void save(Course l) {
-        savePrepareStatement(l);
+    public void save(Course c) {
+  
+        savePrepareStatement(c);
     }
 
-    public void saveStatement(Course l) {
+    public void saveStatement(Course c) {
         Connection con = null;
         try {
             Class.forName("org.apache.derby.jdbc.ClientDriver");
             con = DriverManager.getConnection("jdbc:derby://localhost:1527/ECOLE", "ecole", "ecole");
             Statement s = con.createStatement();
             s.executeUpdate("INSERT INTO ECOLE.COURSE(CITY) VALUES('"
-                    + l.getCode() + "', "
-                    + l.getTitle() + "')");
+                    + c.getId() + "', "
+                    + c.getTitle() + "')");
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         } finally {

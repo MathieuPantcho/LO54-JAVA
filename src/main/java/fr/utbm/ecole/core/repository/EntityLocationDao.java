@@ -13,30 +13,30 @@ public class EntityLocationDao {
     EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ecole");
     EntityManager entityManager = null;
 
-    public void save(Location f) {
+    public void save(Location l) {
         entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
-        entityManager.persist(f);
+        entityManager.persist(l);
         entityManager.getTransaction().commit();
     }
 
-    public ArrayList<Location> listFilm() {
-        ArrayList<Location> films = new ArrayList<Location>();
+    public ArrayList<Location> listLocation() {
+        ArrayList<Location> locactions = new ArrayList<Location>();
         entityManager = entityManagerFactory.createEntityManager();
         Query q = entityManager.createQuery("from LOCATION");
-        films = (ArrayList<Location>) q.getResultList();
-        return films;
+        locactions = (ArrayList<Location>) q.getResultList();
+        return locactions;
     }
 
-    public Location getLocationById(Long movieId) {
+    public Location getLocationById(Long locationId) {
         entityManager = entityManagerFactory.createEntityManager();
-        return entityManager.find(Location.class, movieId);
+        return entityManager.find(Location.class, locationId);
     }
 
-    public void update(Location f) {
+    public void update(Location l) {
         entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
-        entityManager.merge(f);
+        entityManager.merge(l);
         entityManager.getTransaction().commit();
     }
 }

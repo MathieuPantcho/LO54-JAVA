@@ -1,39 +1,39 @@
 
 package fr.utbm.ecole.core.repository;
 
-import fr.utbm.ecole.core.entity.Course;
+import fr.utbm.ecole.core.entity.Client;
 import java.util.ArrayList;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-public class EntityCourseDao {
+public class EntityClientDao {
 
     EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ecole");
     EntityManager entityManager = null;
 
-    public void save(Course c) {
+    public void save(Client c) {
         entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
         entityManager.persist(c);
         entityManager.getTransaction().commit();
     }
 
-    public ArrayList<Course> listCourse() {
-        ArrayList<Course> Courses = new ArrayList<Course>();
+    public ArrayList<Client> listClient() {
+        ArrayList<Client> Clients = new ArrayList<Client>();
         entityManager = entityManagerFactory.createEntityManager();
-        Query q = entityManager.createQuery("from COURSE");
-        Courses = (ArrayList<Course>) q.getResultList();
-        return Courses;
+        Query q = entityManager.createQuery("from CLIENT");
+        Clients = (ArrayList<Client>) q.getResultList();
+        return Clients;
     }
 
-    public Course getCourseById(Long courseId) {
+    public Client getClientById(Long clientId) {
         entityManager = entityManagerFactory.createEntityManager();
-        return entityManager.find(Course.class, courseId);
+        return entityManager.find(Client.class, clientId);
     }
 
-    public void update(Course c) {
+    public void update(Client c) {
         entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
         entityManager.merge(c);
