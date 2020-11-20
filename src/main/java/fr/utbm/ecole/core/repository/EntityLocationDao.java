@@ -2,7 +2,7 @@
 package fr.utbm.ecole.core.repository;
 
 import fr.utbm.ecole.core.entity.Location;
-import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -20,11 +20,10 @@ public class EntityLocationDao {
         entityManager.getTransaction().commit();
     }
 
-    public ArrayList<Location> listLocation() {
-        ArrayList<Location> locactions = new ArrayList<Location>();
+    public List<Location> listLocation() {
         entityManager = entityManagerFactory.createEntityManager();
-        Query q = entityManager.createQuery("from LOCATION");
-        locactions = (ArrayList<Location>) q.getResultList();
+        Query q = entityManager.createQuery("select l from Location l");
+        List<Location> locactions =  q.getResultList();
         return locactions;
     }
 

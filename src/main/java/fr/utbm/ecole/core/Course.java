@@ -1,6 +1,8 @@
 package fr.utbm.ecole.core;
 
-import fr.utbm.ecole.core.controller.DefaultLocationController;
+
+
+import fr.utbm.ecole.core.controller.DefaultCourseController;
 
 /**
  *
@@ -9,7 +11,7 @@ import fr.utbm.ecole.core.controller.DefaultLocationController;
 public class Course {
 
     public static void main(String[] args) {
-        DefaultLocationController dfc = new DefaultLocationController();
-        dfc.registerLocationFromConsoleInput();
+        DefaultCourseController dfc = new DefaultCourseController();
+        dfc.registerCourseFromConsoleInput();
     }
 }

@@ -62,7 +62,7 @@ public class Course implements Serializable {
 
    
     public String toString() {
-        return "Location{" + "code=" + code + ", title=" + title +  '}';
+        return "Course{" + "code=" + code + ", title=" + title +  '}';
     }
     
 }

@@ -28,7 +28,7 @@ public class Location implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "ID")
-    private Long id;
+    private Integer id;
     
     @Basic(optional = false)
     @Column(name = "CITY")
@@ -38,20 +38,20 @@ public class Location implements Serializable {
     public Location() {
     }
 
-    public Location(Long id) {
+    public Location(Integer id) {
         this.id = id;
     }
 
-    public Location(Long id, String city) {
+    public Location(Integer id, String city) {
         this.id = id;
         this.city = city;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
