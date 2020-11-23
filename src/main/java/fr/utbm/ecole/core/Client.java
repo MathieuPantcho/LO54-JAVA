@@ -1,6 +1,6 @@
 package fr.utbm.ecole.core;
 
-import fr.utbm.ecole.core.controller.DefaultCourseController;
+import fr.utbm.ecole.core.controller.DefaultClientController;
 
 /**
  *
@@ -9,7 +9,7 @@ import fr.utbm.ecole.core.controller.DefaultCourseController;
 public class Client {
 
     public static void main(String[] args) {
-        DefaultCourseController dfc = new DefaultCourseController();
+        DefaultClientController dfc = new DefaultClientController();
         dfc.registerCourseFromConsoleInput();
     }
 }

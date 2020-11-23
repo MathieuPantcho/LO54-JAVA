@@ -12,3 +12,4 @@ os.arch=amd64
 os.version=10.0
 derby.system.home=C:\Users\julie\LO54\Data\Projects\LO54-JAVA\Derby
 Chargeur de classe de la base de données démarré - derby.database.classpath = ''
+----------------------------------------------------------------
