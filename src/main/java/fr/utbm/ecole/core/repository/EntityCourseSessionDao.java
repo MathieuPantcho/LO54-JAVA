@@ -23,7 +23,7 @@ public class EntityCourseSessionDao {
     public ArrayList<CourseSession> listCourseSession() {
         ArrayList<CourseSession> CourseSessions = new ArrayList<CourseSession>();
         entityManager = entityManagerFactory.createEntityManager();
-        Query q = entityManager.createQuery("from COURSE_SESSION");
+        Query q = entityManager.createQuery("select cs from course_session cs");
         CourseSessions = (ArrayList<CourseSession>) q.getResultList();
         return CourseSessions;
     }

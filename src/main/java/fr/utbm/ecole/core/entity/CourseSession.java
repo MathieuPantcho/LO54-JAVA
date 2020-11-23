@@ -131,7 +131,7 @@ public class CourseSession implements Serializable {
 
    
     public String toString() {
-        return "Client{" + "id=" + id + ", start_date=" + start_date  + "end_date=" + end_date + ", Location=" + Location + "maximum=" + maximum + ", Course=" + Course +'}';
+        return "Course_session{" + "id=" + id + ", start_date=" + start_date  + ", end_date=" + end_date + ", Location=" + Location + "maximum=" + maximum + ", Course=" + Course +'}';
     }
     
 }
