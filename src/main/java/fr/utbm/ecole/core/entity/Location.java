@@ -41,6 +41,10 @@ public class Location implements Serializable {
     public Location(Integer id) {
         this.id = id;
     }
+    
+    public Location(String city) {
+        this.city = city;
+    }
 
     public Location(Integer id, String city) {
         this.id = id;

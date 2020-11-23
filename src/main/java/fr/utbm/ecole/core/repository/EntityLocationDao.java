@@ -27,7 +27,7 @@ public class EntityLocationDao {
         return locactions;
     }
 
-    public Location getLocationById(Long locationId) {
+    public Location getLocationById(Integer locationId) {
         entityManager = entityManagerFactory.createEntityManager();
         return entityManager.find(Location.class, locationId);
     }

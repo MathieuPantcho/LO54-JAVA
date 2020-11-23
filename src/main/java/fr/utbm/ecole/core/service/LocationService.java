@@ -26,4 +26,11 @@ public class LocationService {
         }
        
     }
+    
+     public Location searchLocationById(Integer idLocation) {
+        
+        EntityLocationDao efd = new EntityLocationDao();
+        return efd.getLocationById(idLocation);
+    }
+     
 }

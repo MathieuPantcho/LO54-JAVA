@@ -10,6 +10,7 @@ public class  Location  {
 
     public static void main(String[] args) {
         DefaultLocationController dfc = new DefaultLocationController();
-        dfc.registerLocationFromConsoleInput();
+        //dfc.registerLocationFromConsoleInput();
+        dfc.searchLocationFromConsoleInput();
     }
 }
