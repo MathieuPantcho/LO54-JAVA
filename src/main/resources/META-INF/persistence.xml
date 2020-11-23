@@ -4,6 +4,8 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>fr.utbm.ecole.core.entity.Course</class>
     <class>fr.utbm.ecole.core.entity.Location</class>
+    <class>fr.utbm.ecole.core.entity.Client</class>
+    <class>fr.utbm.ecole.core.entity.CourseSession</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/ECOLE"/>
       <property name="javax.persistence.jdbc.user" value="ecole"/>

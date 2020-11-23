@@ -2,7 +2,7 @@
 package fr.utbm.ecole.core.repository;
 
 import fr.utbm.ecole.core.entity.CourseSession;
-import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -20,15 +20,14 @@ public class EntityCourseSessionDao {
         entityManager.getTransaction().commit();
     }
 
-    public ArrayList<CourseSession> listCourseSession() {
-        ArrayList<CourseSession> CourseSessions = new ArrayList<CourseSession>();
+    public List<CourseSession> listCourseSession() {
         entityManager = entityManagerFactory.createEntityManager();
-        Query q = entityManager.createQuery("select cs from course_session cs");
-        CourseSessions = (ArrayList<CourseSession>) q.getResultList();
+        Query q = entityManager.createQuery("select cs from CourseSession cs");
+        List<CourseSession> CourseSessions = q.getResultList();
         return CourseSessions;
     }
 
-    public CourseSession getCourseSessionById(Long CourseSessionsId) {
+    public CourseSession getCourseSessionById(Integer CourseSessionsId) {
         entityManager = entityManagerFactory.createEntityManager();
         return entityManager.find(CourseSession.class, CourseSessionsId);
     }

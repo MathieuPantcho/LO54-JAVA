@@ -16,12 +16,17 @@ public class CourseService {
         EntityCourseDao efd = new EntityCourseDao();
 
         cfd.save(f);
-     
+
         efd.save(f);
         List<Course> list = efd.listCourse();
         for (Course Course : list) {
             cfd.save(Course);
         }
-       
+
+    }
+
+    public Course searchCourseById(String CodeCourse){
+        EntityCourseDao efd = new EntityCourseDao();
+        return efd.getCourseById(CodeCourse);
     }
 }

@@ -1,7 +1,9 @@
 package fr.utbm.ecole.core.controller;
 
-import fr.utbm.ecole.core.entity.Course;
-import fr.utbm.ecole.core.service.CourseService;
+import fr.utbm.ecole.core.entity.Client;
+import fr.utbm.ecole.core.entity.CourseSession;
+import fr.utbm.ecole.core.service.ClientService;
+import fr.utbm.ecole.core.service.CourseSessionService;
 import java.util.Scanner;
 
 /**
@@ -10,7 +12,7 @@ import java.util.Scanner;
  */
 public class DefaultClientController {
     
-    public void registerCourseFromConsoleInput(){
+    public void registerClientFromConsoleInput(){
         
         Scanner sc = new Scanner(System.in);
         System.out.println("Firstname ?");
@@ -28,18 +30,26 @@ public class DefaultClientController {
         System.out.println("email ?");
         String email = sc.nextLine();
         
-        System.out.println("Course Session ?");
-        String CourseSession = sc.nextLine();
+        System.out.println("Course Session ID ?");
+        String idCourseSession = sc.nextLine();
         
-        Course c = new Course();
-        c.setCode(Firstname);
-        c.setTitle(LastName);
-        c.setCode(Address);
-        c.setTitle(phone);
-        c.setCode(email);
-        c.setTitle(CourseSession);
+        Client c = new Client();
+        c.setFirstname(Firstname);
+        c.setLastname(LastName);
+        c.setAddress(Address);
+        c.setPhone(phone);
+        c.setEmail(email);
+        c.setCourseSession(searchCourseSessionFromId(Integer.parseInt(idCourseSession)));
+
+     
         
-        CourseService cs = new CourseService();
-        cs.registerCourse(c);
+        ClientService cs = new ClientService();
+        cs.registerClient(c);
+    }
+    
+    public CourseSession searchCourseSessionFromId(Integer idCourseSession) {
+        CourseSessionService fs = new CourseSessionService();
+        CourseSession CourseSession = fs.searchCourseSessionById(idCourseSession);
+        return CourseSession;
     }
 }

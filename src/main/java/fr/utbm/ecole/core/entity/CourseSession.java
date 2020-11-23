@@ -33,7 +33,7 @@ public class CourseSession implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "ID")
-    private Long id;
+    private Integer id;
     
     @Basic(optional = false)
     @Column(name = "START_DATE")
@@ -60,11 +60,11 @@ public class CourseSession implements Serializable {
     public CourseSession() {
     }
 
-    public CourseSession(Long id) {
+    public CourseSession(Integer id) {
         this.id = id;
     }
 
-    public CourseSession(Long id, java.sql.Date start_date,java.sql.Date end_date,Integer maximum,Course Course,Location Location) {
+    public CourseSession(Integer id, java.sql.Date start_date,java.sql.Date end_date,Integer maximum,Course Course,Location Location) {
         this.id = id;
         this.start_date = start_date;
         this.end_date = end_date;
@@ -73,7 +73,7 @@ public class CourseSession implements Serializable {
         this.Location = Location;
     }
     
-    public CourseSession(Long id, java.sql.Date start_date,java.sql.Date end_date,Course Course,Location Location) {
+    public CourseSession(Integer id, java.sql.Date start_date,java.sql.Date end_date,Course Course,Location Location) {
         this.id = id;
         this.start_date = start_date;
         this.end_date = end_date;
@@ -89,11 +89,11 @@ public class CourseSession implements Serializable {
         return Course;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

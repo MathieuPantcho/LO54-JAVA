@@ -31,7 +31,7 @@ public class Client implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "ID")
-    private Long id;
+    private Integer id;
     
     @Basic(optional = false)
     @Column(name = "LASTNAME")
@@ -60,11 +60,11 @@ public class Client implements Serializable {
     public Client() {
     }
 
-    public Client(Long id) {
+    public Client(Integer id) {
         this.id = id;
     }
 
-    public Client(Long id, String lastname, String firstname, String address,String phone,String email, CourseSession CourseSession) {
+    public Client(Integer id, String lastname, String firstname, String address,String phone,String email, CourseSession CourseSession) {
         this.id = id;
         this.lastname = lastname;
         this.firstname = firstname;
@@ -75,11 +75,11 @@ public class Client implements Serializable {
         
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -116,11 +116,11 @@ public class Client implements Serializable {
     }
 
     public String getEmail() {
-        return phone;
+        return email;
     }
 
     public void setEmail(String phone) {
-        this.phone = phone;
+        this.email = phone;
     }
     
     public CourseSession getCourseSession() {
@@ -130,6 +130,7 @@ public class Client implements Serializable {
     public void setCourseSession(CourseSession CourseSession) {
         this.CourseSession = CourseSession;
     }
+    
     public String toString() {
         return "Client{" + "id=" + id + ", lastname=" + lastname + ", firstname=" + firstname + ", address=" + address + ", phone=" + phone + ", email=" + email + ", CourseSession=" + CourseSession +  '}';
     }

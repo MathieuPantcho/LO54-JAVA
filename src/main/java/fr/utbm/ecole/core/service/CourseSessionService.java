@@ -1,8 +1,10 @@
 package fr.utbm.ecole.core.service;
 
 import fr.utbm.ecole.core.entity.CourseSession;
+import fr.utbm.ecole.core.entity.Location;
 import fr.utbm.ecole.core.repository.ConsoleCourseSessionDao;
 import fr.utbm.ecole.core.repository.EntityCourseSessionDao;
+import fr.utbm.ecole.core.repository.EntityLocationDao;
 import java.util.List;
 
 /**
@@ -23,4 +25,9 @@ public class CourseSessionService {
         }
        
     }   
+    
+     public CourseSession searchCourseSessionById(Integer idCourseSession) {
+        EntityCourseSessionDao efd = new EntityCourseSessionDao();
+        return efd.getCourseSessionById(idCourseSession);
+    }
 }

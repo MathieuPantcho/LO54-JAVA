@@ -1,7 +1,7 @@
 package fr.utbm.ecole.core.service;
-import fr.utbm.ecole.core.entity.Course;
-import fr.utbm.ecole.core.repository.ConsoleCourseDao;
-import fr.utbm.ecole.core.repository.EntityCourseDao;
+import fr.utbm.ecole.core.entity.Client;
+import fr.utbm.ecole.core.repository.ConsoleClientDao;
+import fr.utbm.ecole.core.repository.EntityClientDao;
 import java.util.List;
 
 /**
@@ -10,16 +10,16 @@ import java.util.List;
  */
 public class ClientService {
 
-    public void registerCourse(Course f) {
-        ConsoleCourseDao cfd = new ConsoleCourseDao();
-        EntityCourseDao efd = new EntityCourseDao();
+    public void registerClient(Client f) {
+        ConsoleClientDao cfd = new ConsoleClientDao();
+        EntityClientDao efd = new EntityClientDao();
 
         cfd.save(f);
      
         efd.save(f);
-        List<Course> list = efd.listCourse();
-        for (Course Course : list) {
-            cfd.save(Course);
+        List<Client> list = efd.listClient();
+        for (Client Client : list) {
+            cfd.save(Client);
         }
        
     }

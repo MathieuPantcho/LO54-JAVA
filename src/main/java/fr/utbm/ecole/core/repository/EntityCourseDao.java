@@ -29,7 +29,7 @@ public class EntityCourseDao {
     }
   
 
-    public Course getCourseById(Long courseId) {
+    public Course getCourseById(String courseId) {
         entityManager = entityManagerFactory.createEntityManager();
         return entityManager.find(Course.class, courseId);
     }
