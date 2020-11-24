@@ -29,4 +29,14 @@ public class CourseService {
         EntityCourseDao efd = new EntityCourseDao();
         return efd.getCourseById(CodeCourse);
     }
+    
+    public List<Course> getCourseByTitle(String Title){
+        ConsoleCourseDao cfd = new ConsoleCourseDao();
+        EntityCourseDao efd = new EntityCourseDao();
+        List<Course> list = efd.getCourseByTitle(Title);
+        for (Course Course : list) {
+            cfd.save(Course);
+        }
+        return list;
+    }
 }

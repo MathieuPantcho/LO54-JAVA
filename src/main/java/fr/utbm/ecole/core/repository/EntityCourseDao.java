@@ -33,6 +33,14 @@ public class EntityCourseDao {
         entityManager = entityManagerFactory.createEntityManager();
         return entityManager.find(Course.class, courseId);
     }
+    
+    public List<Course> getCourseByTitle(String title) {
+        entityManager = entityManagerFactory.createEntityManager();
+        Query q = entityManager.createQuery("SELECT c FROM Course c WHERE c.title LIKE :custTitle ")
+                                            .setParameter("custTitle", '%'+title+'%');
+        List<Course> Courses = q.getResultList();
+        return Courses;
+    }
 
     public void update(Course c) {
         entityManager = entityManagerFactory.createEntityManager();

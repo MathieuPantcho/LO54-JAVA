@@ -13,10 +13,15 @@ public class CourseSession {
 
     public static void main(String[] args) {
         DefaultCourseSessionController dfcs = new DefaultCourseSessionController();
+        /**
         try {
             dfcs.registerCourseSessionFromConsoleInput();
         } catch (ParseException ex) {
             Logger.getLogger(CourseSession.class.getName()).log(Level.SEVERE, null, ex);
         }
+        **/
+        dfcs.getCourseSessionFromConsoleInput();
+
+        
     }
 }

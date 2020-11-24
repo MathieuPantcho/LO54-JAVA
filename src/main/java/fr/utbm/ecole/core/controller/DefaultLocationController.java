@@ -24,14 +24,10 @@ public class DefaultLocationController {
         fs.registerLocation(f);
     }
     
-    public void searchLocationFromConsoleInput() {
-
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Id Location ?");
-        String idLocation= sc.nextLine();
+    public Location searchLocationFromId(Integer idLocation) {
 
         LocationService fs = new LocationService();
-        Location Location = fs.searchLocationById(Integer.parseInt(idLocation));
-        System.out.println("Location : " + Location.toString());
+        Location Location = fs.searchLocationById(idLocation);
+        return Location;
     }
 }

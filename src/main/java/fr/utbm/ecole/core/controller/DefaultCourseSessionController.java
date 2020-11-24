@@ -1,7 +1,8 @@
 package fr.utbm.ecole.core.controller;
 
 import fr.utbm.ecole.core.entity.Course;
-import fr.utbm.ecole.core.repository.EntityCourseDao;
+import fr.utbm.ecole.core.controller.DefaultCourseController;
+
 import fr.utbm.ecole.core.entity.Location;
 import fr.utbm.ecole.core.entity.CourseSession;
 import fr.utbm.ecole.core.service.CourseService;
@@ -11,12 +12,16 @@ import java.util.Scanner;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
  * @author 
  */
 public class DefaultCourseSessionController {
+    
+    DefaultCourseController dcc = new DefaultCourseController();
+    DefaultLocationController dlc = new DefaultLocationController();
 
     public void registerCourseSessionFromConsoleInput() throws ParseException{
 
@@ -51,26 +56,23 @@ public class DefaultCourseSessionController {
         cs.setStartDate(StartDateSQL);
         cs.setEndDate(EndDateSQL);
         cs.setMaximum(Integer.parseInt(Maximum));
-        cs.setCourse(searchCourseFromId(Course));
-        cs.setLocation(searchLocationFromId(Integer.parseInt(idLocation)));
+        cs.setCourse(dcc.searchCourseFromId(Course));
+        cs.setLocation(dlc.searchLocationFromId(Integer.parseInt(idLocation)));
 
 
 
         CourseSessionService css = new CourseSessionService();
         css.registerCourseSession(cs);
     }
-
-        public Course searchCourseFromId(String CodeCourse) {
-        CourseService fs = new CourseService();
-        Course Course = fs.searchCourseById(CodeCourse);
-        return Course;
-    }
-        
     
-    public Location searchLocationFromId(Integer idLocation) {
-
-        LocationService fs = new LocationService();
-        Location Location = fs.searchLocationById(idLocation);
-        return Location;
+    public void getCourseSessionFromConsoleInput() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Title Course ?");
+        String Title = sc.nextLine();
+        
+        CourseSessionService css = new CourseSessionService();
+        css.searchCourseSessionByTitleCourse(Title);
+        
     }
+
 }

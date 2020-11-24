@@ -26,8 +26,17 @@ public class CourseSessionService {
        
     }   
     
-     public CourseSession searchCourseSessionById(Integer idCourseSession) {
+    public CourseSession searchCourseSessionById(Integer idCourseSession) {
         EntityCourseSessionDao efd = new EntityCourseSessionDao();
         return efd.getCourseSessionById(idCourseSession);
+    }
+    
+    public void searchCourseSessionByTitleCourse(String title) {
+        ConsoleCourseSessionDao csd = new ConsoleCourseSessionDao();
+        EntityCourseSessionDao esd = new EntityCourseSessionDao();
+        List<CourseSession> list = esd.getCourseSessionByTitleCourse(title);
+        for (CourseSession CourseSess : list) {
+            csd.save(CourseSess);
+        }
     }
 }

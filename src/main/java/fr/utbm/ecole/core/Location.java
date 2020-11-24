@@ -9,8 +9,8 @@ import fr.utbm.ecole.core.controller.DefaultLocationController;
 public class  Location  {
 
     public static void main(String[] args) {
-        DefaultLocationController dfc = new DefaultLocationController();
-        //dfc.registerLocationFromConsoleInput();
-        dfc.searchLocationFromConsoleInput();
+        DefaultLocationController dlc = new DefaultLocationController();
+        dlc.registerLocationFromConsoleInput();
+        
     }
 }

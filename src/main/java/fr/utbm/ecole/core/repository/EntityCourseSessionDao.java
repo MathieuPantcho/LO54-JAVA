@@ -1,6 +1,7 @@
 
 package fr.utbm.ecole.core.repository;
 
+import fr.utbm.ecole.core.entity.Course;
 import fr.utbm.ecole.core.entity.CourseSession;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -30,6 +31,14 @@ public class EntityCourseSessionDao {
     public CourseSession getCourseSessionById(Integer CourseSessionsId) {
         entityManager = entityManagerFactory.createEntityManager();
         return entityManager.find(CourseSession.class, CourseSessionsId);
+    }
+    
+    public List<CourseSession> getCourseSessionByTitleCourse(String title) {
+        entityManager = entityManagerFactory.createEntityManager();
+        Query q = entityManager.createQuery("SELECT CS FROM CourseSession CS JOIN cs.Course c WHERE c.title LIKE :custTitle")
+                                            .setParameter("custTitle", '%'+title+'%');
+        List<CourseSession> CourseSessions = q.getResultList();
+        return CourseSessions;
     }
 
     public void update(CourseSession cs) {
