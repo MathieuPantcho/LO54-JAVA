@@ -1,18 +1,13 @@
 package fr.utbm.ecole.core.controller;
 
-import fr.utbm.ecole.core.entity.Course;
-import fr.utbm.ecole.core.controller.DefaultCourseController;
 
-import fr.utbm.ecole.core.entity.Location;
+
 import fr.utbm.ecole.core.entity.CourseSession;
-import fr.utbm.ecole.core.service.CourseService;
-import fr.utbm.ecole.core.service.LocationService;
 import fr.utbm.ecole.core.service.CourseSessionService;
 import java.util.Scanner;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 /**
  *
@@ -65,13 +60,37 @@ public class DefaultCourseSessionController {
         css.registerCourseSession(cs);
     }
     
-    public void getCourseSessionFromConsoleInput() {
+    public void getCourseSessionFromCourseConsoleInput() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Title Course ?");
         String Title = sc.nextLine();
         
         CourseSessionService css = new CourseSessionService();
         css.searchCourseSessionByTitleCourse(Title);
+        
+    }
+    
+    public void getCourseSessionFromLocationConsoleInput() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Title City ?");
+        String city = sc.nextLine();
+        
+        CourseSessionService css = new CourseSessionService();
+        css.searchCourseSessionByLocation(city);
+        
+    }
+    
+    public void getCourseSessionFromDateConsoleInput() throws ParseException {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("StartDate Course Session (format : YYYYMMDD)?");
+        String StartDate = sc.nextLine();
+        SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+        Date parsed = format.parse(StartDate);
+        java.sql.Date StartDateSQL = new java.sql.Date(parsed.getTime());
+        
+        CourseSessionService css = new CourseSessionService();
+        css.searchCourseSessionByDate(StartDateSQL);
         
     }
 

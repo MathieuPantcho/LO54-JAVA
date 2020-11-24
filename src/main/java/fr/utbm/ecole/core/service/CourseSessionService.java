@@ -39,4 +39,22 @@ public class CourseSessionService {
             csd.save(CourseSess);
         }
     }
+    
+    public void searchCourseSessionByLocation(String city) {
+        ConsoleCourseSessionDao csd = new ConsoleCourseSessionDao();
+        EntityCourseSessionDao esd = new EntityCourseSessionDao();
+        List<CourseSession> list = esd.getCourseSessionByLocation(city);
+        for (CourseSession CourseSess : list) {
+            csd.save(CourseSess);
+        }
+    }
+    
+    public void searchCourseSessionByDate(java.sql.Date date) {
+        ConsoleCourseSessionDao csd = new ConsoleCourseSessionDao();
+        EntityCourseSessionDao esd = new EntityCourseSessionDao();
+        List<CourseSession> list = esd.getCourseSessionByDate(date);
+        for (CourseSession CourseSess : list) {
+            csd.save(CourseSess);
+        }
+    }
 }

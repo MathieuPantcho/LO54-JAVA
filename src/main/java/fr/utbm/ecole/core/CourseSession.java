@@ -19,9 +19,14 @@ public class CourseSession {
         } catch (ParseException ex) {
             Logger.getLogger(CourseSession.class.getName()).log(Level.SEVERE, null, ex);
         }
-        **/
-        dfcs.getCourseSessionFromConsoleInput();
+        dfcs.getCourseSessionFromLocationConsoleInput();
+         **/
 
+        try {
+            dfcs.getCourseSessionFromDateConsoleInput();
+        } catch (ParseException ex) {
+            Logger.getLogger(CourseSession.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
 }
