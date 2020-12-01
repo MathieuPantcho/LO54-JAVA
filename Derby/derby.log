@@ -1,7 +1,7 @@
-Tue Nov 24 11:01:36 CET 2020 : Apache Derby Network Server - 10.14.2.0 - (1828579) démarré et prêt à accepter les connexions sur le port 1527
+Tue Dec 01 09:49:34 CET 2020 : Apache Derby Network Server - 10.14.2.0 - (1828579) démarré et prêt à accepter les connexions sur le port 1527
 ----------------------------------------------------------------
-Tue Nov 24 11:01:37 CET 2020:
-Amorçage de Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579) : instance a816c00e-0175-f9b3-6ecf-00005dcdbb27 
+Tue Dec 01 10:28:27 CET 2020:
+Amorçage de Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579) : instance a816c00e-0176-1d7d-ff41-00005dcdbb27 
 dans le répertoire de base de données C:\Users\julie\LO54\Data\Projects\LO54-JAVA\Derby\ECOLE avec le chargeur de classe jdk.internal.loader.ClassLoaders$AppClassLoader@2cdf8d8a
 Chargé de file:/C:/Users/julie/LO54/App/jdk/db/lib/derby.jar
 java.vendor=Oracle Corporation
