@@ -12,3 +12,9 @@ os.arch=amd64
 os.version=10.0
 derby.system.home=C:\Users\julie\LO54\Data\Projects\LO54-JAVA\Derby
 Chargeur de classe de la base de données démarré - derby.database.classpath = ''
+----------------------------------------------------------------
+Wed Dec 02 11:39:12 CET 2020 : fermeture du moteur Derby
+----------------------------------------------------------------
+Wed Dec 02 11:39:12 CET 2020:
+Fermeture de l'instance a816c00e-0176-1d7d-ff41-00005dcdbb27 sur le répertoire de base de données C:\Users\julie\LO54\Data\Projects\LO54-JAVA\Derby\ECOLE avec le chargeur de classe jdk.internal.loader.ClassLoaders$AppClassLoader@2cdf8d8a 
+----------------------------------------------------------------
