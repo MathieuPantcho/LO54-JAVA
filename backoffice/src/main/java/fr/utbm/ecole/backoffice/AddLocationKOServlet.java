@@ -26,7 +26,7 @@ public class AddLocationKOServlet extends HttpServlet {
                 out.println("</head>");
                 out.println("<body>");
                 out.println("<h1>Erreur lors de l'ajout d'un film</h1>");
-                out.println("<a href=/backoffice/addLocationForm.html>Recommencer</a>");
+                out.println("<a href=/backoffice/addLocationForm.jsp>Recommencer</a>");
                 out.println("</body>");
                 out.println("</html>");
         }

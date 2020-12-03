@@ -25,10 +25,8 @@ public class HomeServlet extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Videostore - Shop Management online</h1>");
-            out.println("<a href=/backoffice/locations>Liste des locations :</a>");
-            out.println("<a href=/backoffice/addLocationForm.html>Ajouter une location</a><br>");
-            out.println("<a href=/backoffice/courses>Liste des courses :</a>");
-            out.println("<a href=/backoffice/addCourseForm.html>Ajouter une course</a>");
+            out.println("<a href=/backoffice/addLocationForm.jsp>Manager location</a><br>");
+            out.println("<a href=/backoffice/addCourseForm.jsp>Manager course</a>");
             out.println("</body>");
             out.println("</html>");
         }

@@ -24,7 +24,7 @@ public class AddCourseKOServlet extends HttpServlet {
                 out.println("</head>");
                 out.println("<body>");
                 out.println("<h1>Erreur lors de l'ajout d'un cours</h1>");
-                out.println("<a href=/backoffice/addCourseForm.html>Recommencer</a>");
+                out.println("<a href=/backoffice/addCourseForm.jsp>Recommencer</a>");
                 out.println("</body>");
                 out.println("</html>");
         }
