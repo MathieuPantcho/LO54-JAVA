@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package fr.utbm.ecole.backoffice;
 
 import java.io.IOException;
@@ -8,29 +13,38 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ *
+ * @author MathieuPANTCHENKO
+ */
+@WebServlet(name = "AddClientKOServlet", urlPatterns = {"/AddClientKO"})
+public class AddClientKOServlet extends HttpServlet {
 
-@WebServlet(name="HomeServlet", urlPatterns={"/home","/index.html"})
-public class HomeServlet extends HttpServlet {
-
-   
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>ECOLE</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>ECOLE</h1>");
-            out.println("<a href=/backoffice/addLocationForm.jsp>Manager location</a><br>");
-            out.println("<a href=/backoffice/addCourseForm.jsp>Manager course</a><br>");
-            out.println("<a href=/backoffice/addCourseSessionForm.jsp>Manager course session</a><br>");
-            out.println("<a href=/backoffice/addClientForm.jsp>Manager client</a><br>");
-            out.println("</body>");
-            out.println("</html>");
+             out.println("<!DOCTYPE html>");
+                out.println("<html>");
+                out.println("<head>");
+                out.println("<title>Gestion des clients</title>");            
+                out.println("</head>");
+                out.println("<body>");
+                out.println("<h1>Erreur lors de l'ajout d'un client</h1>");
+                out.println("<a href=/backoffice/>Revenir à l'acceuil</a><br>");
+                out.println("<a href=/backoffice/addClientForm.jsp>Réesayer l'ajout</a><br>");
+                out.println("</body>");
+                out.println("</html>");
         }
     }
 

@@ -23,4 +23,9 @@ public class ClientService {
         }
        
     }
+    
+    public  List<Client> listClient() {
+        EntityClientDao efd = new EntityClientDao();
+        return efd.listClient();
+    }
 }

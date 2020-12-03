@@ -1,12 +1,8 @@
-<%-- 
-    Document   : addCourseSessionJsp
-    Created on : 2 déc. 2020, 17:30:35
-    Author     : MathieuPANTCHENKO
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="fr.utbm.ecole.core.entity.Course" %>
 <%@page import="fr.utbm.ecole.core.service.CourseService" %>
+<%@page import="fr.utbm.ecole.core.entity.CourseSession" %>
+<%@page import="fr.utbm.ecole.core.service.CourseSessionService" %>
 <%@page import="fr.utbm.ecole.core.entity.Location" %>
 <%@page import="fr.utbm.ecole.core.service.LocationService" %>
 <%@page import="java.util.ArrayList" %>
@@ -16,9 +12,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>addCourseSession</title>
+        <title>Gestion des courses sessions</title>
     </head>
     <body>
+        <a href="/backoffice">Retour accueil</a>
         <h1>Ajoutez une nouvelle course session : </h1>
         <form action="/backoffice/AddCourseSession" method="POST">
             <label for="startdate">Start Date : </label>
@@ -72,5 +69,37 @@
             <br>
             <input type="submit" value="Valider"/>  
         </form>
+    <%
+        CourseSessionService courseSessionService = new CourseSessionService();
+        List<CourseSession> listCourseSession = courseSessionService.listCourseSession();
+        
+    %>
+        <br>
+        <h1>Liste des courses sessions</h1>
+        <table>
+        <tr>
+            <td> ID </td>
+            <td> Course Code </td>
+            <td> Course Title </td>
+            <td> Start Date </td>
+            <td> End Date </td>
+            <td> Location </td>
+            <td> Maximum </td>
+            </tr>
+            
+            <%for(CourseSession css : listCourseSession){%>
+                <tr>
+                <td><% out.println(css.getId()); %></td>
+                <td><% out.println(css.getCourse().getCode()); %></td>
+                <td><% out.println(css.getCourse().getTitle()); %></td>
+                <td><% out.println(css.getStartDate()); %></td>
+                <td><% out.println(css.getEndDate()); %></td>
+                <td><% out.println(css.getLocation().getCity()); %></td>
+                <td><% out.println(css.getMaximum()); %></td>
+                </tr>
+            <%}%>
+            </table>
+            </body>
+            </html>
     </body>
 </html>

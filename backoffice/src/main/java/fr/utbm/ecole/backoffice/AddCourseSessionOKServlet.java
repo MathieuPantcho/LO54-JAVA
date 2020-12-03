@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package fr.utbm.ecole.backoffice;
 
 import java.io.IOException;
@@ -13,22 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author MathieuPANTCHENKO
- */
+
 @WebServlet(name = "AddCourseSessionOKServlet", urlPatterns = {"/AddCourseSessionOKServlet"})
 public class AddCourseSessionOKServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -37,11 +21,12 @@ public class AddCourseSessionOKServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
                 out.println("<html>");
                 out.println("<head>");
-                out.println("<title>Ajouter un course session</title>");            
+                out.println("<title>Gestion des courses sessions</title>");            
                 out.println("</head>");
                 out.println("<body>");
                 out.println("<h1>Enregistrement effectué avec succès</h1>");
-                out.println("<a href=/backoffice/>Revenir à l'acceuil</a>");
+                out.println("<a href=/backoffice/>Revenir à l'acceuil</a><br>");
+                out.println("<a href=/backoffice/addCourseSessionForm.jsp>Retour manager course session</a><br>");
                 out.println("</body>");
                 out.println("</html>");
         }

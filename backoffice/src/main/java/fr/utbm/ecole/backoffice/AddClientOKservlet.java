@@ -8,23 +8,18 @@ package fr.utbm.ecole.backoffice;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import fr.utbm.ecole.core.entity.CourseSession;
-import fr.utbm.ecole.core.service.CourseSessionService;
-import java.util.ArrayList;
-import java.util.List;
-import javax.servlet.annotation.WebServlet;
 
 /**
  *
  * @author MathieuPANTCHENKO
  */
-@WebServlet(name = "ListCourseSessionServlet", urlPatterns = {"/CourseSession"})
-public class ListCourseSessionServlet extends HttpServlet {
-    
-    CourseSessionService courseSessionService;
+@WebServlet(name = "AddClientOKservlet", urlPatterns = {"/AddClientOK"})
+public class AddClientOKservlet extends HttpServlet {
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -36,43 +31,20 @@ public class ListCourseSessionServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        courseSessionService = new CourseSessionService();
-        List<CourseSession> listCourseSession = courseSessionService.listCourseSession();
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Ecole</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Liste des courses sessions</h1>");
-            out.println("<table>");
-            out.println("<tr>");
-            out.println("<td> ID </td>");
-            out.println("<td> Course Code </td>");
-            out.println("<td> Course Title </td>");
-            out.println("<td> Start Date </td>");
-            out.println("<td> End Date </td>");
-            out.println("<td> Location </td>");
-            out.println("<td> Maximum </td>");
-            out.println("</tr>");
-            
-            for(CourseSession cs : listCourseSession){
-                out.println("<tr>");
-                out.println("<td>"  + cs.getId() + "</td>");
-                out.println("<td>"  + cs.getCourse().getCode() + "</td>");
-                out.println("<td>"  + cs.getCourse().getTitle() + "</td>");
-                out.println("<td>"  + cs.getStartDate() + "</td>");
-                out.println("<td>"  + cs.getEndDate() + "</td>");
-                out.println("<td>"  + cs.getLocation().getCity() + "</td>");
-                out.println("<td>"  + cs.getMaximum() + "</td>");
-                out.println("</tr>");
-            }
-            out.println("</table>");
-            out.println("</body>");
-            out.println("</html>");
+                out.println("<html>");
+                out.println("<head>");
+                out.println("<title>Gestion des clients</title>");            
+                out.println("</head>");
+                out.println("<body>");
+                out.println("<h1>Enregistrement effectué avec succès</h1>");
+                out.println("<a href=/backoffice/>Revenir à l'acceuil</a><br>");
+                out.println("<a href=/backoffice/addClientForm.jsp>Revenir à manager clients</a><br>");
+                out.println("</body>");
+                out.println("</html>");
         }
     }
 

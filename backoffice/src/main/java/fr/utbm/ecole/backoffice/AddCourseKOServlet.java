@@ -20,11 +20,12 @@ public class AddCourseKOServlet extends HttpServlet {
              out.println("<!DOCTYPE html>");
                 out.println("<html>");
                 out.println("<head>");
-                out.println("<title>Ajouter un cours</title>");            
+                out.println("<title>Gestion des courses</title>");            
                 out.println("</head>");
                 out.println("<body>");
                 out.println("<h1>Erreur lors de l'ajout d'un cours</h1>");
-                out.println("<a href=/backoffice/addCourseForm.jsp>Recommencer</a>");
+                out.println("<a href=/backoffice/>Revenir à l'acceuil</a><br>");
+                out.println("<a href=/backoffice/addCourseForm.jsp>Réesayer l'ajout</a><br>");
                 out.println("</body>");
                 out.println("</html>");
         }

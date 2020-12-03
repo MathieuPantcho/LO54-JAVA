@@ -1,28 +1,39 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package fr.utbm.ecole.backoffice;
 
-import fr.utbm.ecole.core.entity.Course;
-import fr.utbm.ecole.core.service.CourseService;
+import fr.utbm.ecole.core.entity.Client;
+import fr.utbm.ecole.core.service.ClientService;
 import fr.utbm.ecole.core.entity.CourseSession;
 import fr.utbm.ecole.core.service.CourseSessionService;
-import fr.utbm.ecole.core.entity.Location;
-import fr.utbm.ecole.core.service.LocationService;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.ParseException;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ *
+ * @author MathieuPANTCHENKO
+ */
+@WebServlet(name = "addClientServlet", urlPatterns = {"/addClient"})
+public class AddClientServlet extends HttpServlet {
 
-@WebServlet(name = "AddCourseSessionServlet", urlPatterns = {"/AddCourseSession"})
-public class AddCourseSessionServlet extends HttpServlet {
-
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -31,10 +42,10 @@ public class AddCourseSessionServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Gestion des courses sessions</title>");            
+            out.println("<title>Servlet addClientServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AddCourseSessionServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet addClientServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -67,35 +78,27 @@ public class AddCourseSessionServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Map<String,String[]> form = request.getParameterMap();
-        String startdate = form.get("startdate")[0];
-        String enddate = form.get("enddate")[0];
-        String strCourse = form.get("codeCourse")[0];
-        CourseService cs = new CourseService();
-        Course course = cs.searchCourseById(strCourse);
-        String strLocation = form.get("location")[0];
-        Integer intLocation = Integer.parseInt(strLocation);
-        LocationService ls = new LocationService();
-        Location location = ls.searchLocationById(intLocation);
-        String strMaxi = form.get("maximum")[0];
-        Integer maximum = Integer.parseInt(strMaxi);
-        
-        if(course !=null && location !=null && startdate != null && enddate != null && maximum != null ){
-            try {
-                CourseSession csSec = new CourseSession();
-                csSec.setStartDate(startdate);
-                csSec.setEndDate(enddate);
-                csSec.setMaximum(maximum);
-                csSec.setCourse(course);
-                csSec.setLocation(location);
-                CourseSessionService css = new CourseSessionService();
-                css.registerCourseSession(csSec);
-                response.sendRedirect("/backoffice/AddCourseSessionOKServlet");
-            } catch (ParseException ex) {
-                Logger.getLogger(AddCourseSessionServlet.class.getName()).log(Level.SEVERE, null, ex);
-                response.sendRedirect("/backoffice/AddCourseSessionKOServlet");      
-            }
+        String firstname = form.get("firstname")[0];
+        String lastname = form.get("lastname")[0];
+        String address = form.get("address")[0];
+        String email = form.get("email")[0];
+        String phone = form.get("phone")[0];
+        String courseSession = form.get("courseSession")[0];
+        CourseSessionService css = new CourseSessionService();
+        CourseSession cs = css.searchCourseSessionById(Integer.parseInt(courseSession));
+        if(firstname !=null && lastname !=null && address !=null && email !=null && phone !=null && cs !=null){
+            ClientService clientService = new ClientService();
+            Client c = new Client();
+            c.setFirstname(firstname);
+            c.setLastname(lastname);
+            c.setAddress(address);
+            c.setEmail(email);
+            c.setPhone(phone);
+            c.setCourseSession(cs);
+            clientService.registerClient(c); 
+            response.sendRedirect("/backoffice/AddClientOK");
         }else{
-            response.sendRedirect("/backoffice/AddCourseSessionKOServlet");            
+            response.sendRedirect("/backoffice/AddClientKO");            
         }
     }
 

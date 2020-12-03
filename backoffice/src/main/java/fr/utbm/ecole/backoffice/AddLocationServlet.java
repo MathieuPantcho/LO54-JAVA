@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package fr.utbm.ecole.backoffice;
 
 import java.io.IOException;
@@ -16,10 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import fr.utbm.ecole.core.entity.Location;
 import fr.utbm.ecole.core.service.LocationService;
 
-/**
- *
- * @author cleme
- */
+
 @WebServlet(name = "AddLocationServlet", urlPatterns = {"/addlocation"})
 public class AddLocationServlet extends HttpServlet {
 
@@ -32,7 +25,7 @@ public class AddLocationServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AddLocationServlet</title>");            
+            out.println("<title>Gestion des locations</title>");            
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet AddLocationServlet at " + request.getContextPath() + "</h1>");

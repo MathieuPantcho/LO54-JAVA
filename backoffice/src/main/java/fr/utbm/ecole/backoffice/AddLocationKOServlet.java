@@ -22,11 +22,12 @@ public class AddLocationKOServlet extends HttpServlet {
              out.println("<!DOCTYPE html>");
                 out.println("<html>");
                 out.println("<head>");
-                out.println("<title>Ajouter un film</title>");            
+                out.println("<title>Gestion des locations</title>");            
                 out.println("</head>");
                 out.println("<body>");
-                out.println("<h1>Erreur lors de l'ajout d'un film</h1>");
-                out.println("<a href=/backoffice/addLocationForm.jsp>Recommencer</a>");
+                out.println("<h1>Erreur lors de l'ajout d'une location</h1>");
+                out.println("<a href=/backoffice/>Revenir à l'acceuil</a><br>");
+                out.println("<a href=/backoffice/addLocationForm.jsp>Réessayer l'ajout</a><br>");
                 out.println("</body>");
                 out.println("</html>");
         }

@@ -22,7 +22,7 @@ public class AddCourseServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AddCourseServlet</title>");            
+            out.println("<title>Gestion des courses</title>");            
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet AddCourseServlet at " + request.getContextPath() + "</h1>");

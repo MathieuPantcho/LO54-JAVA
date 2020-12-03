@@ -17,8 +17,6 @@
         <form action="/backoffice/addlocation" method="POST">
             <label for="city">Titre du City : </label>
             <input type="text" id="city" name="city" minlength="3" required/>
-            <br>
-            
             <input type="submit" value="Valider"/>            
         </form>
         <h1>Liste des Locations </h1>
