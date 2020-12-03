@@ -6,6 +6,8 @@
 package fr.utbm.ecole.core.entity;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -105,12 +107,26 @@ public class CourseSession implements Serializable {
         this.start_date = start_date;
     }
     
+    public void setStartDate(String start_date) throws ParseException {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
+        Date parsed = format.parse(start_date);
+        java.sql.Date StartDateSQL = new java.sql.Date(parsed.getTime());
+        this.start_date = StartDateSQL;
+    }
+    
      public java.sql.Date getEndDate() {
         return end_date;
     }
 
     public void setEndDate(java.sql.Date end_date) {
         this.end_date = end_date;
+    }
+    
+    public void setEndDate(String end_date) throws ParseException {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
+        Date parsed = format.parse(end_date);
+        java.sql.Date StartDateSQL = new java.sql.Date(parsed.getTime());
+        this.end_date = StartDateSQL;
     }
     
      public Location getLocation() {

@@ -23,7 +23,7 @@ public class CourseSession {
          **/
 
         try {
-            dfcs.getCourseSessionFromDateConsoleInput();
+            dfcs.registerCourseSessionFromConsoleInput();
         } catch (ParseException ex) {
             Logger.getLogger(CourseSession.class.getName()).log(Level.SEVERE, null, ex);
         }

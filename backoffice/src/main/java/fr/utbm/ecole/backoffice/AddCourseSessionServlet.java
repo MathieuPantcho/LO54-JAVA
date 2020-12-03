@@ -5,8 +5,18 @@
  */
 package fr.utbm.ecole.backoffice;
 
+import fr.utbm.ecole.core.entity.Course;
+import fr.utbm.ecole.core.service.CourseService;
+import fr.utbm.ecole.core.entity.CourseSession;
+import fr.utbm.ecole.core.service.CourseSessionService;
+import fr.utbm.ecole.core.entity.Location;
+import fr.utbm.ecole.core.service.LocationService;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -72,7 +82,37 @@ public class AddCourseSessionServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        Map<String,String[]> form = request.getParameterMap();
+        String startdate = form.get("startdate")[0];
+        String enddate = form.get("enddate")[0];
+        String strCourse = form.get("codeCourse")[0];
+        CourseService cs = new CourseService();
+        Course course = cs.searchCourseById(strCourse);
+        String strLocation = form.get("location")[0];
+        Integer intLocation = Integer.parseInt(strLocation);
+        LocationService ls = new LocationService();
+        Location location = ls.searchLocationById(intLocation);
+        String strMaxi = form.get("maximum")[0];
+        Integer maximum = Integer.parseInt(strMaxi);
+        
+        if(course !=null && location !=null && startdate != null && enddate != null && maximum != null ){
+            try {
+                CourseSession csSec = new CourseSession();
+                csSec.setStartDate(startdate);
+                csSec.setEndDate(enddate);
+                csSec.setMaximum(maximum);
+                csSec.setCourse(course);
+                csSec.setLocation(location);
+                CourseSessionService css = new CourseSessionService();
+                css.registerCourseSession(csSec);
+                response.sendRedirect("/backoffice/AddCourseSessionOKServlet");
+            } catch (ParseException ex) {
+                Logger.getLogger(AddCourseSessionServlet.class.getName()).log(Level.SEVERE, null, ex);
+                response.sendRedirect("/backoffice/AddCourseSessionKOServlet");      
+            }
+        }else{
+            response.sendRedirect("/backoffice/AddCourseSessionKOServlet");            
+        }
     }
 
     /**

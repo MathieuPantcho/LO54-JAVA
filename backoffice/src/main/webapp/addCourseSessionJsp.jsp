@@ -22,15 +22,17 @@
         <h1>Ajoutez une nouvelle course session : </h1>
         <form action="/backoffice/AddCourseSession" method="POST">
             <label for="startdate">Start Date : </label>
-            <input type="text" id="startdate" name="startdate" required/>
+            <input type="date" id="startdate" name="startdate"
+                   min="2020-01-01" max="2025-12-31">
             <br>
             <br>
             <label for="enddate">End Date : </label>
-            <input type="text" id="enddate" name="enddate" required/>
+            <input type="date" id="enddate" name="enddate"
+                   min="2020-01-01" max="2025-12-31">
             <br>
             <br>
             <label for="codeCourse">Code course :</label>
-            <select>
+            <select name="codeCourse" id="codeCourse">
     <%
             CourseService cs = new CourseService();
             List<Course> listCourse = cs.listCourse();
@@ -39,7 +41,7 @@
                 Course course = (Course) listCourse.get(i) ;
                 String item = course.getCode();
     %>
-               <option value="<%=course%>"><%=item%></option>
+               <option for="codeCourse" value=<%=item%>><%=item%></option>
     <%
             }
     %>
@@ -47,7 +49,7 @@
             <br>
             <br>
             <label for="location">City :</label>
-            <select>
+            <select name="location" id="location">
     <%
             LocationService ls = new LocationService();
             List<Location> listLocation = ls.listLocation();
@@ -55,8 +57,9 @@
             {
                 Location location = (Location) listLocation.get(i) ;
                 String item = location.getCity();
+                Integer id = location.getId();
     %>
-               <option value="<%=location%>"><%=item%></option>
+               <option value=<%=id%>><%=item%></option>
     <%
             }
     %>
