@@ -57,4 +57,10 @@ public class CourseSessionService {
             csd.save(CourseSess);
         }
     }
+    
+    public  List<CourseSession> listCourseSession() {
+        
+        EntityCourseSessionDao efd = new EntityCourseSessionDao();
+        return efd.listCourseSession();
+    }
 }
