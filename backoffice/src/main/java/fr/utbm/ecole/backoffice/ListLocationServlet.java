@@ -14,25 +14,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import fr.utbm.ecole.core.service.LocationService;
 import fr.utbm.ecole.core.entity.Location;
-import java.util.ArrayList;
 import java.util.List;
-/**
- *
- * @author cleme
- */
-@WebServlet(name = "ListServlet", urlPatterns = {"/locations"})
-public class ListServlet extends HttpServlet {
+
+@WebServlet(name = "ListLocationServlet", urlPatterns = {"/locations"})
+public class ListLocationServlet extends HttpServlet {
 
     LocationService locationService;
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         this.locationService = new LocationService();

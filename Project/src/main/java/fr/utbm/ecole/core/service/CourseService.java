@@ -39,4 +39,9 @@ public class CourseService {
         }
         return list;
     }
+    
+    public  List<Course> listCourse() {
+        EntityCourseDao efd = new EntityCourseDao();
+        return efd.listCourse();
+    }
 }

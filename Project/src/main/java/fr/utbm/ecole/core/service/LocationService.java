@@ -33,7 +33,7 @@ public class LocationService {
         return efd.getLocationById(idLocation);
     }
     
-     public  List<Location> listLocation() {
+    public  List<Location> listLocation() {
         
         EntityLocationDao efd = new EntityLocationDao();
         return efd.listLocation();

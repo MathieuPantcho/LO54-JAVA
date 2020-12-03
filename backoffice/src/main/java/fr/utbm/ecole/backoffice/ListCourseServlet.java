@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package fr.utbm.ecole.backoffice;
 
 import java.io.IOException;
@@ -7,28 +12,33 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import fr.utbm.ecole.core.service.CourseService;
+import fr.utbm.ecole.core.entity.Course;
+import java.util.List;
 
+@WebServlet(name = "ListCourseServlet", urlPatterns = {"/courses"})
+public class ListCourseServlet extends HttpServlet {
 
-@WebServlet(name="HomeServlet", urlPatterns={"/home","/index.html"})
-public class HomeServlet extends HttpServlet {
-
-   
+    CourseService courseService;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        this.courseService = new CourseService();
+        List<Course> listCourse = this.courseService.listCourse();
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Dvd Store</title>");            
+            out.println("<title>Ecole</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Videostore - Shop Management online</h1>");
-            out.println("<a href=/backoffice/locations>Liste des locations :</a>");
-            out.println("<a href=/backoffice/addLocationForm.html>Ajouter une location</a><br>");
-            out.println("<a href=/backoffice/courses>Liste des courses :</a>");
-            out.println("<a href=/backoffice/addCourseForm.html>Ajouter une course</a>");
+            out.println("<h1>Liste des courses</h1>");
+            out.println("<ul>");
+            for(Course c : listCourse){
+                out.println("<li>"  + c.getCode() + " : "  + c.getTitle() +  "</li>");
+            }
+            out.println("</ul>");
             out.println("</body>");
             out.println("</html>");
         }

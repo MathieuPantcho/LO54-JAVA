@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package fr.utbm.ecole.backoffice;
 
 import java.io.IOException;
@@ -13,17 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import fr.utbm.ecole.core.entity.Location;
-import fr.utbm.ecole.core.service.LocationService;
+import fr.utbm.ecole.core.entity.Course;
+import fr.utbm.ecole.core.service.CourseService;
 
-/**
- *
- * @author cleme
- */
-@WebServlet(name = "AddLocationServlet", urlPatterns = {"/addlocation"})
-public class AddLocationServlet extends HttpServlet {
+@WebServlet(name = "AddCourseServlet", urlPatterns = {"/addcourse"})
+public class AddCourseServlet extends HttpServlet {
 
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -32,10 +22,10 @@ public class AddLocationServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AddLocationServlet</title>");            
+            out.println("<title>Servlet AddCourseServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AddLocationServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet AddCourseServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -46,25 +36,25 @@ public class AddLocationServlet extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
-   
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Map<String,String[]> form = request.getParameterMap();
-        String city = form.get("city")[0];
-        if(city !=null){
-            Location mv = new Location(city);
-            LocationService ms = new LocationService();
-            ms.registerLocation(mv); 
-            response.sendRedirect("/backoffice/addLocationOk");
+        String code = form.get("code")[0];
+        String title = form.get("title")[0];
+        CourseService cs = new CourseService();
+        Course ct = cs.searchCourseById(code);
+        if(code !=null && title !=null && ct == null ){
+            Course c = new Course(code,title);
+            cs.registerCourse(c); 
+            response.sendRedirect("/backoffice/addCourseOk");
         }else{
-            response.sendRedirect("/backoffice/addLocationKO");            
+            response.sendRedirect("/backoffice/addCourseKO");            
         }
         
     }
 
-  
     @Override
     public String getServletInfo() {
         return "Short description";
