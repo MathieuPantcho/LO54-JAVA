@@ -2,6 +2,7 @@ package fr.utbm.ecole.core.controller;
 
 import fr.utbm.ecole.core.entity.Course;
 import fr.utbm.ecole.core.service.CourseService;
+import fr.utbm.ecole.core.service.CourseServiceRedis;
 import java.util.Scanner;
 import java.util.List;
 
@@ -24,9 +25,12 @@ public class DefaultCourseController {
         Course f = new Course();
         f.setCode(Code);
         f.setTitle(Title);
-        
+        System.out.println("================ Course BDD SQL ================");
         CourseService fs = new CourseService();
         fs.registerCourse(f);
+        System.out.println("================= Course Redis =================");
+        CourseServiceRedis fsr = new CourseServiceRedis();
+        fsr.registerCourseRedis(f);
     }
     
     public Course searchCourseFromId(String CodeCourse) {

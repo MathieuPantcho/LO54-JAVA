@@ -4,6 +4,7 @@ import fr.utbm.ecole.core.entity.Course;
 import fr.utbm.ecole.core.repository.ConsoleCourseDao;
 import fr.utbm.ecole.core.repository.EntityCourseDao;
 import java.util.List;
+import redis.clients.jedis.Jedis;
 
 /**
  *
