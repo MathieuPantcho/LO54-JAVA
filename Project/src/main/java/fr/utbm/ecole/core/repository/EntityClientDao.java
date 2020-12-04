@@ -21,7 +21,7 @@ public class EntityClientDao {
     }
 
     public List<Client> listClient() {
-         entityManager = entityManagerFactory.createEntityManager();
+        entityManager = entityManagerFactory.createEntityManager();
         Query q = entityManager.createQuery("select c from Client c");
         List<Client> Courses = q.getResultList();
         return Courses;
