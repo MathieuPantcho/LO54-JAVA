@@ -1,6 +1,7 @@
 package fr.utbm.ecole.core.controller;
 
 import fr.utbm.ecole.core.entity.Course;
+import fr.utbm.ecole.core.repository.ConsoleCourseDao;
 import fr.utbm.ecole.core.service.CourseService;
 import fr.utbm.ecole.core.service.CourseServiceRedis;
 import java.util.Scanner;
@@ -41,5 +42,21 @@ public class DefaultCourseController {
     public List<Course> FindCourseFromTitle(String Title){
         CourseService fs = new CourseService();
         return fs.getCourseByTitle(Title);
+    }
+    
+    public void listCourse(){
+        System.out.println("================ Course BDD SQL ================");
+        CourseService fs = new CourseService();
+        ConsoleCourseDao cfd = new ConsoleCourseDao();
+        List<Course> listCourse = fs.listCourse();
+        for (Course Course : listCourse) {
+            cfd.save(Course);
+        }
+        System.out.println("================= Course Redis =================");
+        CourseServiceRedis fsr = new CourseServiceRedis();
+        List<Course> listCourseRedis = fsr.seeAllValues();
+        for (Course Course : listCourseRedis) {
+            cfd.save(Course);
+        }
     }
 }

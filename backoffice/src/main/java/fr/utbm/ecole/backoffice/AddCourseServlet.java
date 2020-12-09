@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import fr.utbm.ecole.core.entity.Course;
 import fr.utbm.ecole.core.service.CourseService;
+import fr.utbm.ecole.core.service.CourseServiceRedis;
 
 @WebServlet(name = "AddCourseServlet", urlPatterns = {"/addcourse"})
 public class AddCourseServlet extends HttpServlet {
@@ -44,10 +45,12 @@ public class AddCourseServlet extends HttpServlet {
         String code = form.get("code")[0];
         String title = form.get("title")[0];
         CourseService cs = new CourseService();
+        CourseServiceRedis csr = new CourseServiceRedis();
         Course ct = cs.searchCourseById(code);
         if(code !=null && title !=null && ct == null ){
             Course c = new Course(code,title);
             cs.registerCourse(c); 
+            csr.registerCourseRedis(c);
             response.sendRedirect("/backoffice/addCourseOk");
         }else{
             response.sendRedirect("/backoffice/addCourseKO");            

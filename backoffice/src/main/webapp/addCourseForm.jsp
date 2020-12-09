@@ -1,10 +1,14 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="fr.utbm.ecole.core.service.CourseService" %>
+<%@page import="fr.utbm.ecole.core.service.CourseServiceRedis" %>
 <%@page import="fr.utbm.ecole.core.entity.Course" %>
 <%@page import="java.util.List" %>
 
 <% CourseService courseService = new CourseService() ; %>
 <% List<Course> listCourse = courseService.listCourse(); %>
+<% CourseServiceRedis courseServiceRedis = new CourseServiceRedis() ; %>
+<% List<Course> listCourseRedis = courseServiceRedis.seeAllValues(); %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -28,9 +32,16 @@
                 <input type="submit" value="Valider"/>            
             </form>
         </div>
-        <h1>Liste des Courses </h1>
+        <h1>Liste des Courses BDD </h1>
         <ul class="list-group">
         <% for(Course c : listCourse){ %>
+              <li class="list-group-item"> <% out.println(c.getCode());%> : <% out.println(c.getTitle());%> </li>
+        <% }%>
+        </ul>
+        <br>
+        <h1>Liste des Courses Redis </h1>
+        <ul class="list-group">
+        <% for(Course c : listCourseRedis){ %>
               <li class="list-group-item"> <% out.println(c.getCode());%> : <% out.println(c.getTitle());%> </li>
         <% }%>
         </ul>
