@@ -112,14 +112,8 @@
         
         for(CourseSession css : listCourseSession){
             if( Listidt.contains(css.getId())&& Listidl.contains(css.getId())&& Listidd.contains(css.getId()) ){
-           
-        
-
-         %>
-       
-            
-           
-                <tr class="table-primary">
+               if(css.getMaximum()!=null){ %>
+                 <tr class="table-primary">
                 <td class="table-primary"><% out.println(css.getId()); %></td>
                 <td class="table-primary"><% out.println(css.getCourse().getCode()); %></td>
                 <td class="table-primary"><% out.println(css.getCourse().getTitle()); %></td>
@@ -131,9 +125,19 @@
                     float pourcentage = Math.round((courseSessionService.GetNbClientCourseSession(css)/css.getMaximum())*100 );
                     out.println( pourcentage); %></td>
                 </tr>
-            <%   }
-        }
-        %>
+                <%
+            }else{%>
+                 <tr class="table-primary">
+                <td class="table-primary"><% out.println(css.getId()); %></td>
+                <td class="table-primary"><% out.println(css.getCourse().getCode()); %></td>
+                <td class="table-primary"><% out.println(css.getCourse().getTitle()); %></td>
+                <td class="table-primary"><% out.println(css.getStartDate()); %></td>
+                <td class="table-primary"><% out.println(css.getEndDate()); %></td>
+                <td class="table-primary"><% out.println(css.getLocation().getCity()); %></td>
+                <td class="table-primary">N/A</td>
+                <td class="table-primary"></td>
+                </tr>
+            <%}}}%>
             </table>
             
             </body>

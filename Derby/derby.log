@@ -1,20 +1,16 @@
-Thu Dec 10 16:29:24 CET 2020 : Apache Derby Network Server - 10.14.2.0 - (1828579) démarré et prêt à accepter les connexions sur le port 1527
+Thu Dec 10 17:46:08 CET 2020 : Apache Derby Network Server - 10.14.2.0 - (1828579) démarré et prêt à accepter les connexions sur le port 1527
 ----------------------------------------------------------------
-Thu Dec 10 16:30:41 CET 2020:
-Amorçage de Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579) : instance a816c00e-0176-4d45-6b7d-00005dcdbb27 
-dans le répertoire de base de données C:\Users\julie\LO54\Data\Projects\LO54-JAVA\Derby\ECOLE avec le chargeur de classe jdk.internal.loader.ClassLoaders$AppClassLoader@2cdf8d8a
-Chargé de file:/C:/Users/julie/LO54/App/jdk/db/lib/derby.jar
+Thu Dec 10 17:46:09 CET 2020:
+Amorçage de Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579) : instance a816c00e-0176-4d8b-8b58-000065b2505a 
+dans le répertoire de base de données D:\Git\LO54-JAVA\LO54-JAVA\Derby\ECOLE avec le chargeur de classe jdk.internal.loader.ClassLoaders$AppClassLoader@2cdf8d8a
+Chargé de file:/D:/LO54/LO54/App/jdk/db/lib/derby.jar
 java.vendor=Oracle Corporation
 java.runtime.version=11.0.4+10-LTS
-user.dir=C:\Users\julie\LO54\App\jdk\db
+user.dir=D:\LO54\LO54\App\jdk\db
 os.name=Windows 10
 os.arch=amd64
 os.version=10.0
-derby.system.home=C:\Users\julie\LO54\Data\Projects\LO54-JAVA\Derby
+derby.system.home=D:\Git\LO54-JAVA\LO54-JAVA\Derby
 Chargeur de classe de la base de données démarré - derby.database.classpath = ''
 ----------------------------------------------------------------
-Thu Dec 10 17:16:12 CET 2020 : fermeture du moteur Derby
-----------------------------------------------------------------
-Thu Dec 10 17:16:12 CET 2020:
-Fermeture de l'instance a816c00e-0176-4d45-6b7d-00005dcdbb27 sur le répertoire de base de données C:\Users\julie\LO54\Data\Projects\LO54-JAVA\Derby\ECOLE avec le chargeur de classe jdk.internal.loader.ClassLoaders$AppClassLoader@2cdf8d8a 
-----------------------------------------------------------------
+Thu Dec 10 17:49:32 CET 2020 : fermeture du moteur Derby
