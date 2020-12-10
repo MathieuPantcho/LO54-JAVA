@@ -3,6 +3,9 @@ package fr.utbm.ecole.core.repository;
 
 import fr.utbm.ecole.core.entity.Course;
 import fr.utbm.ecole.core.entity.CourseSession;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -55,6 +58,9 @@ public class EntityCourseSessionDao {
         List<CourseSession> CourseSessions = q.getResultList();
         return CourseSessions;
     }
+    
+
+    
     public void update(CourseSession cs) {
         entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();

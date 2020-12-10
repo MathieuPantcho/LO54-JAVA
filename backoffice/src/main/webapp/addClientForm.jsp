@@ -58,7 +58,7 @@
                                         CourseSession courseSession = (CourseSession) courseSessionService.get(i) ;
                                         String item = courseSession.getId().toString();
                             %>
-                                       <option for="courseSession" value=<%=item%>><%=courseSession%></option>
+                                       <option for="courseSession" value=<%=item%>>courseSession.getId()</option>
                             <%
                                     }
                             %>

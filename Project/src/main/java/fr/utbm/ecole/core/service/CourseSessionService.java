@@ -5,7 +5,13 @@ import fr.utbm.ecole.core.entity.Location;
 import fr.utbm.ecole.core.repository.ConsoleCourseSessionDao;
 import fr.utbm.ecole.core.repository.EntityCourseSessionDao;
 import fr.utbm.ecole.core.repository.EntityLocationDao;
+import fr.utbm.ecole.core.repository.EntityClientDao;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import java.util.List;
+import java.util.ArrayList;
 
 /**
  *
@@ -31,36 +37,56 @@ public class CourseSessionService {
         return efd.getCourseSessionById(idCourseSession);
     }
     
-    public void searchCourseSessionByTitleCourse(String title) {
-        ConsoleCourseSessionDao csd = new ConsoleCourseSessionDao();
+    public  List<CourseSession> searchCourseSessionByTitleCourse(String title) {
         EntityCourseSessionDao esd = new EntityCourseSessionDao();
         List<CourseSession> list = esd.getCourseSessionByTitleCourse(title);
-        for (CourseSession CourseSess : list) {
-            csd.save(CourseSess);
-        }
+        return list;
     }
     
-    public void searchCourseSessionByLocation(String city) {
-        ConsoleCourseSessionDao csd = new ConsoleCourseSessionDao();
+    public List<CourseSession>  searchCourseSessionByLocation(String city) {
         EntityCourseSessionDao esd = new EntityCourseSessionDao();
         List<CourseSession> list = esd.getCourseSessionByLocation(city);
-        for (CourseSession CourseSess : list) {
-            csd.save(CourseSess);
-        }
+        return list;
     }
     
-    public void searchCourseSessionByDate(java.sql.Date date) {
-        ConsoleCourseSessionDao csd = new ConsoleCourseSessionDao();
+    public List<CourseSession> searchCourseSessionByDate(java.sql.Date date) {
         EntityCourseSessionDao esd = new EntityCourseSessionDao();
         List<CourseSession> list = esd.getCourseSessionByDate(date);
-        for (CourseSession CourseSess : list) {
-            csd.save(CourseSess);
-        }
+        return list;
     }
     
+    
+    public List<CourseSession> searchCourseSessionByDateString(String date){
+        EntityCourseSessionDao esd = new EntityCourseSessionDao();
+        List<CourseSession> list  = new ArrayList<>();
+        try {
+            java.sql.Date DateSQL = StringtoSQLDate(date);
+             List<CourseSession> listDate = esd.getCourseSessionByDate(DateSQL);
+            return listDate;
+        }
+        catch (Exception e) { }
+        
+        return list;
+        
+    }
+    
+    public java.sql.Date StringtoSQLDate(String start_date) throws ParseException {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
+        Date parsed = format.parse(start_date);
+        java.sql.Date DateSQL = new java.sql.Date(parsed.getTime());
+        return DateSQL;
+    }
     public  List<CourseSession> listCourseSession() {
         
         EntityCourseSessionDao efd = new EntityCourseSessionDao();
         return efd.listCourseSession();
     }
+    
+    public float GetNbClientCourseSession(CourseSession cs) {
+        
+        EntityClientDao ecd = new EntityClientDao();
+        int nb = ecd.NbClient(cs.getId());
+        return nb;
+    }
+    
 }

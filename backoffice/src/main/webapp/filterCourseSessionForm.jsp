@@ -7,6 +7,7 @@
 <%@page import="fr.utbm.ecole.core.service.LocationService" %>
 <%@page import="java.util.ArrayList" %>
 <%@page import="java.util.List" %>
+<%@page import="java.util.*" %>
 
 <!DOCTYPE html>
 <html>
@@ -24,34 +25,10 @@
         <div class="row">
   	<div class="col-md-6">
         <div class="form-group">
-        <form action="/backoffice/AddCourseSession" method="POST">
-            <label for="startdate">Start Date : </label>
-            <input type="date" id="startdate" name="startdate"
-                   min="2020-01-01" max="2025-12-31" class="form-control">
-            <br>
-            <br>
-            <label for="enddate">End Date : </label>
-            <input type="date" id="enddate" name="enddate"
-                   min="2020-01-01" max="2025-12-31" class="form-control">
-            <br>
-            <br>
-            <label for="codeCourse">Code course :</label>
-            <select name="codeCourse" id="codeCourse" class="form-control">
-    <%
-            CourseService cs = new CourseService();
-            List<Course> listCourse = cs.listCourse();
-            for (int i=0; i<listCourse.size(); i++)
-            {
-                Course course = (Course) listCourse.get(i) ;
-                String item = course.getCode();
-    %>
-               <option for="codeCourse" value=<%=item%>><%=item%></option>
-    <%
-            }
-    %>
-            </select>
-            <br>
-            <br>
+        <form name="myForm" method="post">
+          
+            <label for="title">Titre : </label>
+            <input type="text" id="title" name="title" class="form-control" />
             <label for="location">City :</label>
             <select name="location" id="location" class="form-control">
     <%
@@ -61,18 +38,16 @@
             {
                 Location location = (Location) listLocation.get(i) ;
                 String item = location.getCity();
-                Integer id = location.getId();
+                
     %>
-               <option value=<%=id%>><%=item%></option>
+               <option value=<%=item%>><%=item%></option>
     <%
             }
     %>
             </select>
-            <br>
-            <br>
-            <label for="maximum">Maximum : </label>
-            <input type="text" id="maximum" name="maximum" required class="form-control" />
-            <br>
+            <label for="date">Start Date : </label>
+            <input type="date" id="date" name="date"
+                   min="2020-01-01" max="2025-12-31" class="form-control">
             <br>
             <input type="submit" value="Valider" class="btn btn-primary" />  
         </form>
@@ -80,13 +55,7 @@
         </div>
         </div>
         </div>
-    <%
-        CourseSessionService courseSessionService = new CourseSessionService();
-        List<CourseSession> listCourseSession = courseSessionService.listCourseSession();
-        
-    %>
-        <br>
-        <h1>Liste des courses sessions</h1>
+                  <h1>Liste des courses sessions</h1>
         <table  class="table">
         <tr class="table-primary">
             <td class="table-primary"> ID </td>
@@ -98,8 +67,57 @@
             <td class="table-primary"> Maximum </td>
             <td class="table-primary"> Pourcentage </td>
             </tr>
+    <%
+        String Titre = request.getParameter("title");
+        String Location = request.getParameter("location");
+        String Date = request.getParameter("date");
+        CourseSessionService courseSessionService = new CourseSessionService();
+        List<CourseSession> listCourseSession = courseSessionService.listCourseSession();
+        List<CourseSession> listCourseSessionr = Collections.emptyList();
+        List<Integer> Listid = new ArrayList();
+        for(CourseSession css : listCourseSession){
+            Listid.add(css.getId());
+        }
+        List<Integer> Listidt = new ArrayList();
+        List<Integer> Listidl = new ArrayList();
+        List<Integer> Listidd = new ArrayList();
+
+        if(Titre != ""){
+            List<CourseSession> listCourseSessiont = courseSessionService.searchCourseSessionByTitleCourse(Titre);
+            for(CourseSession css : listCourseSessiont){
+                Listidt.add(css.getId());
+             }
+        }else{
+            Listidt=Listid;
+        }
+        out.println(Listidt); 
+        if(Location != ""){
+            List<CourseSession> listCourseSessionv = courseSessionService.searchCourseSessionByLocation(Location);
+            for(CourseSession css : listCourseSessionv){
+                Listidl.add(css.getId());
+             }
+        }else{
+            Listidl=Listid;
+        }
+        out.println(Listidl); 
+        if(Date != ""){
+            List<CourseSession> listCourseSessiond = courseSessionService.searchCourseSessionByDateString(Date);
+            for(CourseSession css : listCourseSessiond){
+                Listidd.add(css.getId());
+             }
+        }else{
+            Listidd=Listid;
+        }
+        
+        for(CourseSession css : listCourseSession){
+            if( Listidt.contains(css.getId())&& Listidl.contains(css.getId())&& Listidd.contains(css.getId()) ){
+            out.println(css.getId()); 
+        
+
+         %>
+       
             
-            <%for(CourseSession css : listCourseSession){%>
+           
                 <tr class="table-primary">
                 <td class="table-primary"><% out.println(css.getId()); %></td>
                 <td class="table-primary"><% out.println(css.getCourse().getCode()); %></td>
@@ -112,7 +130,9 @@
                     float pourcentage = Math.round((courseSessionService.GetNbClientCourseSession(css)/css.getMaximum())*100 );
                     out.println( pourcentage); %></td>
                 </tr>
-            <%}%>
+            <%   }
+        }
+        %>
             </table>
             
             </body>

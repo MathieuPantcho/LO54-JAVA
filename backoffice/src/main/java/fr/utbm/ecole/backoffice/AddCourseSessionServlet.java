@@ -10,6 +10,7 @@ import fr.utbm.ecole.core.service.LocationService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "AddCourseSessionServlet", urlPatterns = {"/AddCourseSession"})
 public class AddCourseSessionServlet extends HttpServlet {
-
+    List<CourseSession> listCourseSession;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -52,7 +53,12 @@ public class AddCourseSessionServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        CourseSessionService courseSessionService = new CourseSessionService();
+        
+        this.listCourseSession = courseSessionService.listCourseSession();
+        
+	request.setAttribute( "listCourseSession", this.listCourseSession );
+	this.getServletContext().getRequestDispatcher( "addCourseSessionForm.jsp" ).forward( request, response );
     }
 
     /**
