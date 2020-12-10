@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import redis.clients.jedis.Jedis;
+import fr.utbm.ecole.core.repository.RedisServiceDao;
 
 /**
  *
@@ -18,10 +19,10 @@ import redis.clients.jedis.Jedis;
  */
 public class CourseServiceRedis {
         
-    public void registerCourseRedis(Course f) {
-        Jedis jedis = new Jedis();
-        jedis.set(f.getCode(), f.getTitle());
-        List<Course> list = seeAllValues();
+    public void registerCourseRedis(Course c) {
+        RedisServiceDao rsd = new RedisServiceDao();
+        rsd.registerCourseRedis(c);
+        List<Course> list = rsd.seeAllValues();
         ConsoleCourseDao ccd = new ConsoleCourseDao();
         for(Course course : list){
             ccd.save(course);
@@ -29,15 +30,8 @@ public class CourseServiceRedis {
     }
     
     public List<Course> seeAllValues(){
-        List<Course> result = new ArrayList<Course>();
-        Jedis jedis = new Jedis();
-        Set<String> redis = jedis.keys("*");
-        for(String key : redis){
-            String value = jedis.get(key);
-            String strResult = key + " : " + value;
-            result.add(new Course(key,value));
-        }
-        return result;
+        RedisServiceDao rsd = new RedisServiceDao();
+        return rsd.seeAllValues();
     }
     
 }

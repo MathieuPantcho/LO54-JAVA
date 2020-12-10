@@ -25,13 +25,13 @@
         <div class="row">
   	<div class="col-md-6">
         <div class="form-group">
-        <form name="myForm" method="post">
+        <form  id="filtre" action="" method="post">
           
             <label for="title">Titre : </label>
-            <input type="text" id="title" name="title" class="form-control" />
+            <input type="text" id="title" name="title" class="form-control"  form="filtre"/>
             <label for="location">City :</label>
-            <select name="location" id="location" class="form-control">
-                <option hidden disabled selected value=""></option>
+            <select name="location" id="location" class="form-control" form="filtre">
+                <option value=""></option>
     <%
             LocationService ls = new LocationService();
             List<Location> listLocation = ls.listLocation();
@@ -48,7 +48,7 @@
             </select>
             <label for="date">Start Date : </label>
             <input type="date" id="date" name="date"
-                   min="2020-01-01" max="2025-12-31" class="form-control">
+                   min="2020-01-01" max="2025-12-31" class="form-control" form="filtre">
             <br>
             <input type="submit" value="Valider" class="btn btn-primary" />  
         </form>
@@ -91,7 +91,7 @@
         }else{
             Listidt=Listid;
         }
-        out.println(Listidt); 
+        
         if(Location != ""){
             List<CourseSession> listCourseSessionv = courseSessionService.searchCourseSessionByLocation(Location);
             for(CourseSession css : listCourseSessionv){
@@ -100,7 +100,7 @@
         }else{
             Listidl=Listid;
         }
-        out.println(Listidl); 
+      
         if(Date != ""){
             List<CourseSession> listCourseSessiond = courseSessionService.searchCourseSessionByDateString(Date);
             for(CourseSession css : listCourseSessiond){
@@ -112,7 +112,7 @@
         
         for(CourseSession css : listCourseSession){
             if( Listidt.contains(css.getId())&& Listidl.contains(css.getId())&& Listidd.contains(css.getId()) ){
-            out.println(css.getId()); 
+           
         
 
          %>

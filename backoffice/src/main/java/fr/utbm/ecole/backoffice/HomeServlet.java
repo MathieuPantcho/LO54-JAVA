@@ -33,7 +33,7 @@ public class HomeServlet extends HttpServlet {
             out.println("<a href=\"/backoffice/addCourseForm.jsp\" class=\"btn btn-primary\"  role=\"button\" style=\"margin-bottom: 5px;\">Manager course</a><br>");
             out.println("<a href=\"/backoffice/addCourseSessionForm.jsp\" class=\"btn btn-primary\"  role=\"button\" style=\"margin-bottom: 5px;\">Manager course session</a><br>");
             out.println("<a href=\"/backoffice/ListClients.jsp\" class=\"btn btn-primary\"  role=\"button\" style=\"margin-bottom: 5px;\">Liste des clients</a><br>");
-            out.println("<a href=\"/backoffice/filterCourseSessionForm.jsp\" class=\"btn btn-primary\"  role=\"button\" style=\"margin-bottom: 5px;\">Liste des session filter</a><br>");
+            out.println("<a href=\"/backoffice/filterCourseSessionForm.jsp\" class=\"btn btn-primary\"  role=\"button\" style=\"margin-bottom: 5px;\">Liste des session avec filtre</a><br>");
 
             out.println("</body>");
             out.println("</html>");

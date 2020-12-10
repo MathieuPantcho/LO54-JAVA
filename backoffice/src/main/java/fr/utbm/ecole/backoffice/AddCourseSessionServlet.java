@@ -82,8 +82,12 @@ public class AddCourseSessionServlet extends HttpServlet {
         Integer intLocation = Integer.parseInt(strLocation);
         LocationService ls = new LocationService();
         Location location = ls.searchLocationById(intLocation);
-        String strMaxi = form.get("maximum")[0];
-        Integer maximum = Integer.parseInt(strMaxi);
+        Integer maximum = null;
+        if(!form.get("maximum")[0].equals("")){
+            String strMaxi = form.get("maximum")[0];
+            maximum = Integer.parseInt(strMaxi);
+        }
+        
         
         if(course !=null && location !=null && startdate != null && enddate != null && maximum != null ){
             try {
@@ -101,7 +105,23 @@ public class AddCourseSessionServlet extends HttpServlet {
                 response.sendRedirect("/backoffice/AddCourseSessionKOServlet");      
             }
         }else{
-            response.sendRedirect("/backoffice/AddCourseSessionKOServlet");            
+            if( maximum == null ){
+                try {
+                    CourseSession csSec = new CourseSession();
+                    csSec.setStartDate(startdate);
+                    csSec.setEndDate(enddate);
+                    csSec.setCourse(course);
+                    csSec.setLocation(location);
+                    CourseSessionService css = new CourseSessionService();
+                    css.registerCourseSession(csSec);
+                    response.sendRedirect("/backoffice/AddCourseSessionOKServlet");
+                } catch (ParseException ex) {
+                    Logger.getLogger(AddCourseSessionServlet.class.getName()).log(Level.SEVERE, null, ex);
+                    response.sendRedirect("/backoffice/AddCourseSessionKOServlet");      
+                }
+            }else{
+                response.sendRedirect("/backoffice/AddCourseSessionKOServlet");            
+            }            
         }
     }
 
