@@ -20,7 +20,7 @@
     <body style="margin: 1em">
         <a href="/backoffice" class="btn btn-primary"  role="button">Retour accueil</a>
         <hr>
-        <h1>Ajoutez une nouvelle course session : </h1>
+        <h1>Filtres course session : </h1>
         <div class="container">
         <div class="row">
   	<div class="col-md-6">
@@ -31,6 +31,7 @@
             <input type="text" id="title" name="title" class="form-control" />
             <label for="location">City :</label>
             <select name="location" id="location" class="form-control">
+                <option hidden disabled selected value=""></option>
     <%
             LocationService ls = new LocationService();
             List<Location> listLocation = ls.listLocation();
@@ -55,7 +56,7 @@
         </div>
         </div>
         </div>
-                  <h1>Liste des courses sessions</h1>
+        <h1>Liste des courses sessions</h1>
         <table  class="table">
         <tr class="table-primary">
             <td class="table-primary"> ID </td>

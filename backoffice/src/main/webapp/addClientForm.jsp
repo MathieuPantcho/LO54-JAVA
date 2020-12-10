@@ -3,6 +3,10 @@
 <%@page import="fr.utbm.ecole.core.service.ClientService" %>
 <%@page import="fr.utbm.ecole.core.entity.CourseSession" %>
 <%@page import="fr.utbm.ecole.core.service.CourseSessionService" %>
+<%@page import="fr.utbm.ecole.core.entity.Location" %>
+<%@page import="fr.utbm.ecole.core.service.LocationService" %>
+<%@page import="fr.utbm.ecole.core.entity.Course" %>
+<%@page import="fr.utbm.ecole.core.service.CourseService" %>
 <%@page import="java.util.ArrayList" %>
 <%@page import="java.util.List" %>
 
@@ -48,7 +52,7 @@
                                     <br>
                                     <br>
 
-                                    <label for="courseSession">Course Session : </label>
+                                    <label for="courseSession">Course Session ID : </label>
                                     <select class="form-control" name="courseSession" id="courseSession">
                             <%
                                     CourseSessionService css = new CourseSessionService();
@@ -58,7 +62,7 @@
                                         CourseSession courseSession = (CourseSession) courseSessionService.get(i) ;
                                         String item = courseSession.getId().toString();
                             %>
-                                       <option for="courseSession" value=<%=item%>>courseSession.getId()</option>
+                                       <option for="courseSession" value=<%=item%>><%=item%></option>
                             <%
                                     }
                             %>
@@ -71,9 +75,42 @@
                   </div>
             </div>
         </div>
-
-            </body>
-            </html>
+        <div>
+    <%
+        CourseSessionService courseSessionServiceSec = new CourseSessionService();
+        List<CourseSession> listCourseSession = courseSessionServiceSec.listCourseSession();
+    %>
+        <br>
+        <br>
+        <h1>Liste des courses sessions : </h1>
+        <table  class="table">
+        <tr class="table-primary">
+            <td class="table-primary"> ID </td>
+            <td class="table-primary"> Course Code </td>
+            <td class="table-primary"> Course Title </td>
+            <td class="table-primary"> Start Date </td>
+            <td class="table-primary"> End Date </td>
+            <td class="table-primary"> Location </td>
+            <td class="table-primary"> Maximum </td>
+            <td class="table-primary"> Pourcentage </td>
+            </tr>
+            
+            <%for(CourseSession cssSec : listCourseSession){%>
+                <tr class="table-primary">
+                <td class="table-primary"><% out.println(cssSec.getId()); %></td>
+                <td class="table-primary"><% out.println(cssSec.getCourse().getCode()); %></td>
+                <td class="table-primary"><% out.println(cssSec.getCourse().getTitle()); %></td>
+                <td class="table-primary"><% out.println(cssSec.getStartDate()); %></td>
+                <td class="table-primary"><% out.println(cssSec.getEndDate()); %></td>
+                <td class="table-primary"><% out.println(cssSec.getLocation().getCity()); %></td>
+                <td class="table-primary"><% out.println(cssSec.getMaximum()); %></td>
+                <td class="table-primary"><%
+                    float pourcentage = Math.round((courseSessionServiceSec.GetNbClientCourseSession(cssSec)/cssSec.getMaximum())*100 );
+                    out.println( pourcentage); %></td>
+                </tr>
+            <%}%>
+            </table>
+            </div>
     </body>
 </html>
 
