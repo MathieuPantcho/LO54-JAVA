@@ -12,24 +12,31 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
         <title>Gestion des courses sessions</title>
     </head>
-    <body>
-        <a href="/backoffice">Retour accueil</a>
+    <body style="margin: 1em">
+        <a href="/backoffice" class="btn btn-primary"  role="button">Retour accueil</a>
+        <hr>
         <h1>Ajoutez une nouvelle course session : </h1>
+        <div class="container">
+        <div class="row">
+  	<div class="col-md-6">
+        <div class="form-group">
         <form action="/backoffice/AddCourseSession" method="POST">
             <label for="startdate">Start Date : </label>
             <input type="date" id="startdate" name="startdate"
-                   min="2020-01-01" max="2025-12-31">
+                   min="2020-01-01" max="2025-12-31" class="form-control">
             <br>
             <br>
             <label for="enddate">End Date : </label>
             <input type="date" id="enddate" name="enddate"
-                   min="2020-01-01" max="2025-12-31">
+                   min="2020-01-01" max="2025-12-31" class="form-control">
             <br>
             <br>
             <label for="codeCourse">Code course :</label>
-            <select name="codeCourse" id="codeCourse">
+            <select name="codeCourse" id="codeCourse" class="form-control">
     <%
             CourseService cs = new CourseService();
             List<Course> listCourse = cs.listCourse();
@@ -46,7 +53,7 @@
             <br>
             <br>
             <label for="location">City :</label>
-            <select name="location" id="location">
+            <select name="location" id="location" class="form-control">
     <%
             LocationService ls = new LocationService();
             List<Location> listLocation = ls.listLocation();
@@ -64,11 +71,15 @@
             <br>
             <br>
             <label for="maximum">Maximum : </label>
-            <input type="text" id="maximum" name="maximum" required/>
+            <input type="text" id="maximum" name="maximum" required class="form-control" />
             <br>
             <br>
-            <input type="submit" value="Valider"/>  
+            <input type="submit" value="Valider" class="btn btn-primary" />  
         </form>
+        </div>
+        </div>
+        </div>
+        </div>
     <%
         CourseSessionService courseSessionService = new CourseSessionService();
         List<CourseSession> listCourseSession = courseSessionService.listCourseSession();
@@ -76,26 +87,26 @@
     %>
         <br>
         <h1>Liste des courses sessions</h1>
-        <table>
-        <tr>
-            <td> ID </td>
-            <td> Course Code </td>
-            <td> Course Title </td>
-            <td> Start Date </td>
-            <td> End Date </td>
-            <td> Location </td>
-            <td> Maximum </td>
+        <table  class="table">
+        <tr class="table-primary">
+            <td class="table-primary"> ID </td>
+            <td class="table-primary"> Course Code </td>
+            <td class="table-primary"> Course Title </td>
+            <td class="table-primary"> Start Date </td>
+            <td class="table-primary"> End Date </td>
+            <td class="table-primary"> Location </td>
+            <td class="table-primary"> Maximum </td>
             </tr>
             
             <%for(CourseSession css : listCourseSession){%>
-                <tr>
-                <td><% out.println(css.getId()); %></td>
-                <td><% out.println(css.getCourse().getCode()); %></td>
-                <td><% out.println(css.getCourse().getTitle()); %></td>
-                <td><% out.println(css.getStartDate()); %></td>
-                <td><% out.println(css.getEndDate()); %></td>
-                <td><% out.println(css.getLocation().getCity()); %></td>
-                <td><% out.println(css.getMaximum()); %></td>
+                <tr class="table-primary">
+                <td class="table-primary"><% out.println(css.getId()); %></td>
+                <td class="table-primary"><% out.println(css.getCourse().getCode()); %></td>
+                <td class="table-primary"><% out.println(css.getCourse().getTitle()); %></td>
+                <td class="table-primary"><% out.println(css.getStartDate()); %></td>
+                <td class="table-primary"><% out.println(css.getEndDate()); %></td>
+                <td class="table-primary"><% out.println(css.getLocation().getCity()); %></td>
+                <td class="table-primary"><% out.println(css.getMaximum()); %></td>
                 </tr>
             <%}%>
             </table>
