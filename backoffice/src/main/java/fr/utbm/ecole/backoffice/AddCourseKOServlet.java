@@ -20,12 +20,13 @@ public class AddCourseKOServlet extends HttpServlet {
              out.println("<!DOCTYPE html>");
                 out.println("<html>");
                 out.println("<head>");
-                out.println("<title>Gestion des courses</title>");            
+                out.println("<title>Gestion des courses</title>");
+                out.println("<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1' crossorigin='anonymous'>");                  
                 out.println("</head>");
                 out.println("<body>");
                 out.println("<h1>Erreur lors de l'ajout d'un cours</h1>");
-                out.println("<a href=/backoffice/>Revenir à l'acceuil</a><br>");
-                out.println("<a href=/backoffice/addCourseForm.jsp>Réesayer l'ajout</a><br>");
+                out.println("<a href=/backoffice/ class=\"btn btn-primary\"  role=\"button\" style=\"margin-bottom: 5px;\">Revenir à l'acceuil</a><br>");
+                out.println("<a href=/backoffice/addCourseForm.jsp class=\"btn btn-primary\"  role=\"button\" style=\"margin-bottom: 5px;\">Réesayer l'ajout</a><br>");
                 out.println("</body>");
                 out.println("</html>");
         }
