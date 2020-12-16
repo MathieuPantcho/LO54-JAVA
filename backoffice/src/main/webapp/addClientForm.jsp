@@ -131,6 +131,8 @@
         %>
         </select>
                           </form>   
+        <br>
+        <br>
         <label for="firstname">Firstname : </label>
                                     <input class="form-control" type="text" id="firstname" name="firstname" required form="client"/>
                                     <br>
